@@ -36,13 +36,13 @@
       color: #6b4ca0;
     }
     .profile-img {
-      width: 200px;
-      height: 200px;
+      width: 300px;
+      height: 300px;
       border-radius: 60%;
       object-fit: cover;
       margin: 20px auto;
       display: block;
-      border: 4px solid #5e2ca5;
+      border: 4px solid #5e2da2;
     }
     section {
       max-width: 1000px;
@@ -128,17 +128,19 @@
       color: #7a42c6;
       font-weight: 500;
     }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      header h2 {
-        font-size: 1.1rem;
-      }
-      .project-card img {
-        height: 250px;
-      }
+    @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
+
+    .about-image img {
+      width: 90%;
+      height: auto;
+    }
+  }
+
 
     /* Modal styles */
     .modal {
@@ -243,6 +245,35 @@
     .icon-item:hover {
       transform: scale(1.15);
     }
+    .about-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .about-image img {
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 4px solid #5e2ca5;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .about-text {
+      max-width: 600px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .about-text p {
+      margin-bottom: 1em;
+    }
+
 
   </style>
 </head>
@@ -254,14 +285,23 @@
     <h2>IT Student and Tech Enthusiast</h2>
   </header>
 
-  <section class="about" data-aos="fade-up">
-    <h3>About Me</h3>
-    <p>
-      Results-driven professional passionate about continuous learning and innovation,
-      recognized for utilizing analytical thinking and creativity to address challenges and
-      provide impactful solutions in dynamic environments.
-    </p>
-  </section>
+  <section id="about" class="section" data-aos="fade-up">
+  <h2>About Me</h2>
+  <div class="about-content">
+    <div class="about-image">
+      <img src="documents/subpic.jpg" alt="Dharshan V" />
+    </div>
+    <div class="about-text">
+      <p>
+        I'm Dharshan V, a passionate tech enthusiast and dedicated student exploring the world of software development, web technologies, and digital innovation. I love turning creative ideas into real-world applications.
+      </p>
+      <p>
+        With hands-on experience in Python, Flutter, and web development, I enjoy building responsive, modern apps and websites. I’m always curious to learn more and push the boundaries of what technology can do.
+      </p>
+    </div>
+  </div>
+</section>
+
 
  <section class="skills" data-aos="fade-up">
     <h3>Skills & Technologies</h3>
@@ -326,9 +366,10 @@
   <section class="certifications" data-aos="fade-up">
     <h3>Certifications</h3>
     <ul>
-      <li><a href="https://coursera.org/share/google-it-cert" target="_blank" rel="noopener">Google IT Support Certificate – Coursera</a></li>
-      <li><a href="https://www.freecodecamp.org/certification/username/responsive-web-design" target="_blank" rel="noopener">Responsive Web Design – freeCodeCamp</a></li>
-      <li><a href="https://coursera.org/share/python-for-everybody-cert" target="_blank" rel="noopener">Python for Everybody – University of Michigan (Coursera)</a></li>
+      <li><a href="https://github.com/Dharsh606/DharshanVportfolio/blob/main/git.png" target="_blank" rel="noopener">Git Training – Simplilearn</a></li>
+      <li><a href="https://github.com/Dharsh606/DharshanVportfolio/blob/main/cyber%20security.png" target="_blank" rel="noopener">Introduction to Cyber Security – – Simplilearn</a></li>
+      <li><a href="https://github.com/Dharsh606/DharshanVportfolio/blob/main/webinar.png" target="_blank" rel="noopener">Webinar on Professional Career
+Counselling – Elewayte</a></li>
     </ul>
   </section>
 
@@ -342,7 +383,7 @@
     <p>Email: <a href="mailto:gurudhaya2536@gmail.com">gurudhaya2536@gmail.com</a></p>
     <p>Phone: <a href="tel:+916382546285">+91 63825 46285</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/dharshanvreddy" target="_blank" rel="noopener">linkedin.com/in/dharshanvreddy</a></p>
-    <p>GitHub: <a href="https://github.com/Dharsh606/portfolio" target="_blank" rel="noopener">github.com/Dharsh606</a></p>
+    <p>GitHub: <a href="https://github.com/Dharsh606/" target="_blank" rel="noopener">github.com/Dharsh606</a></p>
   </section>
 
   <footer>
