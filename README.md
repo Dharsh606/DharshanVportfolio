@@ -27,9 +27,9 @@ Hi, I'm **Dharsh** from Hosur, Tamil Nadu, India — a tech enthusiast and a sel
 
 ## 📞 Contact
 
-- 📧 Email: [your.email@example.com](mailto:your.email@example.com)
-- 🌐 Portfolio: [yourportfolio.com](https://yourportfolio.com)
-- 🔗 LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- 📧 Email: [gurudhaya2536@gmail.com](mailto:gurudhaya2536@gmail.com)
+- 🌐 Portfolio: [https://dharsh606.github.io/DharshanVportfolio/](https://dharsh606.github.io/DharshanVportfolio/)
+- 🔗 LinkedIn: [https://www.linkedin.com/in/dharshanvreddy/](https://www.linkedin.com/in/dharshanvreddy/)
 
 ---
 
