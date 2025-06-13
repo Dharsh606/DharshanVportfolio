@@ -367,7 +367,23 @@
 section h3 {
   text-shadow: 0 0 5px rgba(94, 44, 165, 0.3);
 }
-    
+
+section {
+  position: relative;
+  margin: 60px auto;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #6414d5, #9d72e3);
+  border-radius: 3px;
+}
   </style>
 </head>
 <body>
