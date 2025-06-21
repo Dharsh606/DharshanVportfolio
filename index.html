@@ -141,6 +141,60 @@
       box-shadow: 0 2px 8px rgba(94,44,165,0.1);
       pointer-events: none;
     }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* wider rectangular layout */
+      gap: 20px;
+    }
+
+    .experience-card {
+      background-color: #f4eaff;
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(94, 44, 165, 0.15);
+      color: #4b007d;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .experience-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(94, 44, 165, 0.3);
+    }
+
+    .experience-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(94, 44, 165, 0.1);
+      pointer-events: none;
+    }
+
+    .experience-card h3 {
+      margin: 0 0 05px;
+      font-size: 0.9rem;
+    }
+
+    .experience-card p {
+      margin: 0;
+      font-size: 0.75rem;
+    }
+
+    .experience-card a {
+      color: #4b007d;
+      text-decoration: underline;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-top: 8px;
+      display: inline-block;
+    }
+
     footer {
       text-align: center;
       padding: 30px 10px;
@@ -231,12 +285,12 @@
       pointer-events: none;
     }
     .skills-icons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-}
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
 
     .icon-item {
       display: flex;
@@ -459,6 +513,25 @@ section::before {
     </div>
   </section>
 
+ <!-- 1st experience -->
+
+<section id="experience" data-aos="zoom-in-down" data-aos-duration="1500">
+  <h3>Experience</h3>
+  <div class="experience-grid">
+
+    <div class="experience-card" 
+         data-title="Full Stack Intern – White and Box Tech" 
+         data-description="At White and Box Company, I’m interning as a Full Stack Developer, actively engaging in end-to-end development on real-time projects involving both client-side and server-side technologies."
+         data-images='["documents/experience/whitebox1.png","documents/experience/whitebox2.png","documents/experience/whitebox3.png"]'>
+      <img src="documents/experience/w&blogo.png" alt="White and Box Tech" />
+      <h3>Full Stack Intern – White and Box...(Click This For Detail View)</h3>
+      <p>Full Stack Intern at White and Box, actively contributing to real-world web applications through frontend development, backend integration, and performance optimization.</p>
+    </div>
+
+  </div>
+</section>
+
+
   <!-- 1st project -->
 
   <section id="projects" data-aos="zoom-in-down" data-aos-duration="1500">
@@ -665,8 +738,30 @@ section::before {
       }
     }
 
+    // porject modal
+
     // Open modal when clicking project cards
     document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => openModal(card));
+    });
+
+    // Close modal on close button
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Close modal on outside click
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Close modal on ESC key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'block') closeModal();
+    });
+    
+ // experience modal
+     
+    // Open modal when clicking experience cards
+    document.querySelectorAll('.experience-card').forEach(card => {
       card.addEventListener('click', () => openModal(card));
     });
 
