@@ -10,6 +10,17 @@
     href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
   />
 
+ <div id="loading-screen">
+  <div id="loading-overlay"></div>
+  <div id="loading-content">
+    <h2 class="loading-subtitle">CODE. CREATE. INNOVATE.</h2>
+    <div class="loading-percentage" id="loading-percentage">0%</div>
+    <div class="loading-bar">
+      <div class="loading-progress" id="loading-progress"></div>
+    </div>
+  </div>
+</div>
+
   <style>
     * {
       margin: 0;
@@ -461,77 +472,82 @@ section::before {
   left: 100%;
 }
 
-/* Particle Intro Container */
-.particle-intro {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+#loading-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-  z-index: 9999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  z-index: 9999;
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
 }
 
-/* Canvas (Particles) */
-#particle-canvas {
+#loading-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+  z-index: 0;
 }
 
-/* Intro Text */
-.intro-text {
+#loading-content {
+  position: relative;
   text-align: center;
-  z-index: 10;
-  opacity: 0;
-  animation: fadeIn 2s 1.5s forwards;
+  z-index: 1;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  max-width: 90%;
 }
 
-.particle-title {
-  font-size: 4rem;
-  color: rgb(0, 0, 0);
-  margin-bottom: 10px;
-  text-shadow: 0 0 5px rgba(203, 72, 247, 0.8);
+.loading-subtitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  color: #00ffe5;
+  text-shadow: 0 0 8px rgba(0, 255, 229, 0.4);
 }
 
-.particle-subtitle {
-  font-size: 1.5rem;
-  color: #000000;
-  letter-spacing: 3px;
+.loading-percentage {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.loading-bar {
+  width: 300px;
+  max-width: 80vw;
+  height: 8px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
-/* Hide Intro After Animation */
-.particle-intro.hidden {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-  pointer-events: none;
+.loading-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ffe5, #00ffaa, #00e1ff);
+  box-shadow: 0 0 10px #00ffe5;
+  transition: width 0.3s ease;
+  border-radius: 4px;
 }
-
   </style>
 </head>
 <body>
 
-  <!-- Particle Physics Intro -->
-<div class="particle-intro">
-  <canvas id="particle-canvas"></canvas>
-  <div class="intro-text">
-    <h1 class="particle-title">Dharshan V</h1>
-    <p class="particle-subtitle">Code • Create • Innovate</p>
-  </div>
-</div>
-
+  
   <header data-aos="zoom-out-up" data-aos-duration="2700">
 
     <img src="documents/profile.jpg" alt="Dharshan V" class="profile-img" />
@@ -868,51 +884,22 @@ section::before {
       if (e.key === 'Escape' && modal.style.display === 'block') closeModal();
     });
 
-    const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const percentageEl = document.getElementById('loading-percentage');
+const progressEl = document.getElementById('loading-progress');
 
-// Particles
-const particles = [];
-for (let i = 0; i < 60; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 3 + 1,
-    speedX: Math.random() * 2 - 1,
-    speedY: Math.random() * 2 - 1
-  });
-}
-
-// Animation Loop
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  // Draw particles
-  particles.forEach(p => {
-    ctx.fillStyle = '#5e2ca5';
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fill();
-    
-    // Movement
-    p.x += p.speedX;
-    p.y += p.speedY;
-    
-    // Bounce off edges
-    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-  });
-  
-  requestAnimationFrame(animate);
-}
-animate();
-
-// Hide intro after 5s
-setTimeout(() => {
-  document.querySelector('.particle-intro').classList.add('hidden');
-}, 5000);
+let percent = 0;
+const interval = setInterval(() => {
+  percent++;
+  percentageEl.textContent = percent + "%";
+  progressEl.style.width = percent + "%";
+  if (percent >= 100) {
+    clearInterval(interval);
+    document.getElementById('loading-screen').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('loading-screen').style.display = 'none';
+    }, 600);
+  }
+}, 30);
 
   </script>
 </body>
