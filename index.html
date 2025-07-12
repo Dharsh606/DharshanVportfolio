@@ -523,6 +523,25 @@
       filter: brightness(0) invert(1);
     }
 
+        .thank-you-popup {
+      position: fixed;
+      top: 400px;
+      right: -500px;  /* hidden initially */
+      background: rgba(115, 242, 242, 0.95);
+      color: #000000;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #23d6d6;
+      font-size: 1rem;
+      z-index: 9999;
+      transition: right 0.5s ease;
+    }
+
+    .thank-you-popup.show {
+      right: 90px;
+    }
+
+
     
 
     /* Buttons */
@@ -914,6 +933,10 @@
         <a href="mailto:gurudhaya2536@gmail.com" class="neon-button">Send Email</a>
       </div>
     </div>
+    <div id="thankYouPopup" class="thank-you-popup">
+  <p>Thank you for your message! I'll get back to you soon.</p>
+</div>
+
   </section>
   <footer>
     <p>© 2025 Dharshan V. All rights reserved.</p>
@@ -1150,8 +1173,15 @@
 
       if (isValid) {
         // Simulate form submission
-        alert('Thank you for your message! I\'ll get back to you soon.');
-        contactForm.reset();
+        const thankYouPopup = document.getElementById('thankYouPopup');
+thankYouPopup.classList.add('show');
+
+// Hide after 4 seconds
+setTimeout(() => {
+  thankYouPopup.classList.remove('show');
+}, 4000);
+
+contactForm.reset();
       }
     });
   </script>
