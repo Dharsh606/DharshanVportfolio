@@ -381,7 +381,7 @@
       color: #81c784;
       text-shadow: 0 0 4px rgba(129, 199, 132, 0.2);
     }
-
+ 
     /* Contact Section */
     .contact-content {
       text-align: center;
@@ -405,6 +405,11 @@
       transition: all 0.3s ease;
     }
 
+    body.light-theme .contact-item {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
     .contact-item:hover {
       border-color: #64b5f6;
       box-shadow: 0 0 8px rgba(100, 181, 246, 0.15);
@@ -422,6 +427,70 @@
       color: #81c784;
       text-shadow: 0 0 4px rgba(129, 199, 132, 0.2);
     }
+    .contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid rgba(100, 181, 246, 0.3);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s, background 0.3s;
+  backdrop-filter: blur(6px);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input:focus {
+  border-color: #23d6d6;
+  box-shadow: 0 0 10px #23d6d6;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.neon-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #23d6d6, #235c5c);
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.2s;
+  text-shadow: 0 0 5px #23d6d6;
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 15px #23d6d6;
+  transform: translateY(-2px);
+}
+
+.form-error {
+  display: none;
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.form-error.show {
+  display: block;
+}
+
 
     /* Social Icons */
     .social-icons {
@@ -453,6 +522,8 @@
       height: 40px;
       filter: brightness(0) invert(1);
     }
+
+    
 
     /* Buttons */
     .neon-button {
@@ -769,14 +840,39 @@
     </div>
   </section>
 
-  <!-- contact -->
-
+  
+  <!-- Contact Section -->
   <section class="full-section section-contact" data-aos="zoom-in-down" data-aos-duration="1500">
     <h2 class="section-title">Get In Touch</h2>
     <div class="contact-content">
       <p style="font-size: 1.3rem; margin-bottom: 30px; color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);">
         If you're interested in collaborating, hiring, or just want to say hello — feel free to reach out!
       </p>
+      
+      <!-- Contact Form -->
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <input type="text" class="form-input" id="name" placeholder="Your Name" required>
+          <div class="form-error" id="nameError">Please enter your name</div>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" class="form-input" id="email" placeholder="Your Email" required>
+          <div class="form-error" id="emailError">Please enter a valid email</div>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" class="form-input" id="subject" placeholder="Subject" required>
+          <div class="form-error" id="subjectError">Please enter a subject</div>
+        </div>
+        
+        <div class="form-group">
+          <textarea class="form-input form-textarea" id="message" placeholder="Your Message" required></textarea>
+          <div class="form-error" id="messageError">Please enter your message</div>
+        </div>
+        
+        <button type="submit" class="neon-button">Send Message</button>
+      </form>
       
       <div class="contact-info">
         <div class="contact-item">
@@ -819,7 +915,6 @@
       </div>
     </div>
   </section>
-
   <footer>
     <p>© 2025 Dharshan V. All rights reserved.</p>
   </footer>
@@ -983,6 +1078,82 @@
 
     // Create particles periodically
     setInterval(createParticle, 3000);
+
+    // Contact Form Validation
+    const contactForm = document.getElementById('contactForm');
+    const formInputs = {
+      name: document.getElementById('name'),
+      email: document.getElementById('email'),
+      subject: document.getElementById('subject'),
+      message: document.getElementById('message')
+    };
+
+    const formErrors = {
+      name: document.getElementById('nameError'),
+      email: document.getElementById('emailError'),
+      subject: document.getElementById('subjectError'),
+      message: document.getElementById('messageError')
+    };
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function showError(field, message) {
+      formErrors[field].textContent = message;
+      formErrors[field].classList.add('show');
+      formInputs[field].style.borderColor = '#ff6b6b';
+    }
+
+    function hideError(field) {
+      formErrors[field].classList.remove('show');
+      formInputs[field].style.borderColor = 'rgba(100, 181, 246, 0.15)';
+    }
+
+    Object.keys(formInputs).forEach(field => {
+      formInputs[field].addEventListener('input', () => {
+        hideError(field);
+      });
+    });
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Validate name
+      if (formInputs.name.value.trim() === '') {
+        showError('name', 'Please enter your name');
+        isValid = false;
+      }
+
+      // Validate email
+      if (formInputs.email.value.trim() === '') {
+        showError('email', 'Please enter your email');
+        isValid = false;
+      } else if (!validateEmail(formInputs.email.value)) {
+        showError('email', 'Please enter a valid email');
+        isValid = false;
+      }
+
+      // Validate subject
+      if (formInputs.subject.value.trim() === '') {
+        showError('subject', 'Please enter a subject');
+        isValid = false;
+      }
+
+      // Validate message
+      if (formInputs.message.value.trim() === '') {
+        showError('message', 'Please enter your message');
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Simulate form submission
+        alert('Thank you for your message! I\'ll get back to you soon.');
+        contactForm.reset();
+      }
+    });
   </script>
 </body>
 </html>
