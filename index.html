@@ -17,9 +17,82 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 25%, #16213e 50%, #0a0a1a 100%);
       color: #ffffff;
       overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 26, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 20px;
+      gap: 50px;
+    }
+
+    .nav-logo a {
+      color: #00d4ff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+      margin-right: 20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 50px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .nav-link:hover {
+      color: #00d4ff;
+      background: rgba(0, 212, 255, 0.15);
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+    }
+
+    .nav-link.active {
+      color: #00d4ff;
+      background: rgba(0, 212, 255, 0.25);
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background: #00d4ff;
+      margin: 3px 0;
+      transition: 0.3s;
     }
 
     /* Header Section */
@@ -29,9 +102,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #533483 100%);
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 25%, #16213e 50%, #2d1b69 100%);
       position: relative;
       overflow: hidden;
+      margin-top: 80px;
     }
 
     header::before {
@@ -56,8 +130,8 @@
       border-radius: 80%;
       object-fit: cover;
       margin-bottom: 30px;
-      border: 2px solid #64b5f6;
-      box-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
+      border: 3px solid #00d4ff;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
       animation: profileGlow 3s ease-in-out infinite alternate;
       z-index: 2;
       position: relative;
@@ -65,19 +139,19 @@
 
     @keyframes profileGlow {
       0% { 
-        box-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
         transform: scale(1);
       }
       100% { 
-        box-shadow: 0 0 12px rgba(100, 181, 246, 0.4);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.7);
         transform: scale(1.01);
       }
     }
 
     header h1 {
       font-size: 4rem;
-      color: #64b5f6;
-      text-shadow: 0 0 5px rgba(100, 181, 246, 0.3);
+      color: #00d4ff;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       margin-bottom: 20px;
       z-index: 2;
       position: relative;
@@ -85,15 +159,15 @@
     }
 
     @keyframes titleGlow {
-      0% { text-shadow: 0 0 5px rgba(100, 181, 246, 0.3); }
-      100% { text-shadow: 0 0 8px rgba(100, 181, 246, 0.4); }
+      0% { text-shadow: 0 0 10px rgba(0, 212, 255, 0.6); }
+      100% { text-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
     }
 
     header h2 {
       font-size: 2rem;
-      font-weight: 400;
-      color: #81c784;
-      text-shadow: 0 0 4px rgba(129, 199, 132, 0.3);
+      font-weight: 500;
+      color: #00ff88;
+      text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
       z-index: 2;
       position: relative;
     }
@@ -134,19 +208,31 @@
       background: linear-gradient(135deg, #3f5277 0%, #4a6fa5 50%, #0f0f23 100%);
     }
 
+    .section-blogs {
+      background: linear-gradient(135deg, #435979 0%, #2d3a54 50%, #334463 100%);
+    }
+
+    .section-articles {
+      background: linear-gradient(135deg, #33486b 0%, #385580 50%, #374966 100%);
+    }
+
+    .section-resources {
+      background: linear-gradient(135deg, #375989 0%, #38557a 50%, #3f4a57 100%);
+    }
+
     /* Section Titles */
     .section-title {
       font-size: 3.5rem;
-      color: #64b5f6;
+      color: #00d4ff;
       text-align: center;
       margin-bottom: 50px;
-      text-shadow: 0 0 5px rgba(100, 181, 246, 0.3);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       animation: sectionTitleGlow 3s ease-in-out infinite alternate;
     }
 
     @keyframes sectionTitleGlow {
-      0% { text-shadow: 0 0 5px rgba(100, 181, 246, 0.3); }
-      100% { text-shadow: 0 0 8px rgba(100, 181, 246, 0.4); }
+      0% { text-shadow: 0 0 10px rgba(0, 212, 255, 0.6); }
+      100% { text-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
     }
 
     /* About Section */
@@ -164,14 +250,14 @@
       height: 650px;
       object-fit: cover;
       border-radius: 20px;
-      border: 2px solid #64b5f6;
-      box-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
+      border: 3px solid #00d4ff;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
       animation: aboutImageGlow 4s ease-in-out infinite alternate;
     }
 
     @keyframes aboutImageGlow {
-      0% { box-shadow: 0 0 8px rgba(100, 181, 246, 0.3); }
-      100% { box-shadow: 0 0 12px rgba(100, 181, 246, 0.4); }
+      0% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.5); }
+      100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.7); }
     }
 
     .about-text {
@@ -185,9 +271,9 @@
     .about-text p {
       margin-bottom: 20px;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.12);
       border-radius: 15px;
-      border: 1px solid rgba(100, 181, 246, 0.15);
+      border: 2px solid rgba(0, 212, 255, 0.25);
       backdrop-filter: blur(10px);
     }
 
@@ -205,9 +291,9 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      background: rgba(249, 245, 245, 0.788);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 20px;
-      border: 1px solid rgba(25, 115, 193, 0.893);
+      border: 2px solid #00d4ff;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
       cursor: pointer;
@@ -215,8 +301,8 @@
 
     .icon-item:hover {
       transform: translateY(-5px) scale(1.02);
-      border-color: #4baef094;
-      box-shadow: 0 0 10px rgba(2, 9, 13, 0.954);
+      border-color: #00ff88;
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
     }
 
     .icon-item img {
@@ -228,9 +314,9 @@
 
     .icon-item span {
       font-size: 1.1rem;
-      font-weight: 600;
-      color: #050606;
-      text-shadow: 0 0 3px rgba(20, 135, 230, 0.839);
+      font-weight: 700;
+      color: #0a0a1a;
+      text-shadow: 0 0 3px rgba(0, 212, 255, 0.3);
     }
 
     /* Experience and Projects Grid */
@@ -243,10 +329,10 @@
     }
 
     .neon-card {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.12);
       padding: 30px;
       border-radius: 20px;
-      border: 1px solid rgba(100, 181, 246, 0.15);
+      border: 2px solid rgba(0, 212, 255, 0.25);
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
       cursor: pointer;
@@ -279,8 +365,8 @@
 
     .neon-card:hover {
       transform: translateY(-8px);
-      border-color: #64b5f6;
-      box-shadow: 0 0 15px rgba(100, 181, 246, 0.2);
+      border-color: #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
     }
 
     .neon-card img {
@@ -295,10 +381,10 @@
     }
 
     .neon-card h3 {
-      color: #64b5f6;
+      color: #00d4ff;
       font-size: 1.5rem;
       margin-bottom: 15px;
-      text-shadow: 0 0 4px rgba(100, 181, 246, 0.2);
+      text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
     }
 
     .neon-card p {
@@ -312,13 +398,13 @@
       display: inline-block;
       margin-top: 15px;
       padding: 10px 20px;
-      background: linear-gradient(45deg, #533483, #64b5f6);
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
       color: #ffffff;
       text-decoration: none;
       border-radius: 25px;
       font-weight: bold;
       transition: all 0.3s ease;
-      box-shadow: 0 0 5px rgba(100, 181, 246, 0.2);
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
     }
 
     .neon-card a:hover {
@@ -344,10 +430,10 @@
     }
 
     .cert-column h4 {
-      color: #81c784;
+      color: #00ff88;
       font-size: 2rem;
       margin-bottom: 25px;
-      text-shadow: 0 0 4px rgba(129, 199, 132, 0.2);
+      text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
       text-align: center;
     }
 
@@ -365,21 +451,21 @@
     }
 
     .cert-column li:hover {
-      background: rgba(100, 181, 246, 0.08);
+      background: rgba(0, 212, 255, 0.15);
       transform: translateX(5px);
-      box-shadow: 0 0 5px rgba(100, 181, 246, 0.1);
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
     }
 
     .cert-column a {
-      color: #cdd2d6;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: 500;
-      text-shadow: 0 0 3px rgba(100, 181, 246, 0.2);
+      font-weight: 600;
+      text-shadow: 0 0 3px rgba(0, 212, 255, 0.3);
     }
 
     .cert-column a:hover {
-      color: #81c784;
-      text-shadow: 0 0 4px rgba(129, 199, 132, 0.2);
+      color: #00ff88;
+      text-shadow: 0 0 5px rgba(0, 255, 136, 0.4);
     }
  
     /* Contact Section */
@@ -397,10 +483,10 @@
     }
 
     .contact-item {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.12);
       padding: 25px;
       border-radius: 15px;
-      border: 1px solid rgba(100, 181, 246, 0.15);
+      border: 2px solid rgba(0, 212, 255, 0.25);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
@@ -411,21 +497,21 @@
     }
 
     .contact-item:hover {
-      border-color: #64b5f6;
-      box-shadow: 0 0 8px rgba(100, 181, 246, 0.15);
+      border-color: #00d4ff;
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
       transform: translateY(-3px);
     }
 
     .contact-item a {
-      color: #64b5f6;
+      color: #00d4ff;
       text-decoration: none;
       font-size: 1.1rem;
-      text-shadow: 0 0 3px rgba(100, 181, 246, 0.2);
+      text-shadow: 0 0 4px rgba(0, 212, 255, 0.3);
     }
 
     .contact-item a:hover {
-      color: #81c784;
-      text-shadow: 0 0 4px rgba(129, 199, 132, 0.2);
+      color: #00ff88;
+      text-shadow: 0 0 5px rgba(0, 255, 136, 0.4);
     }
     .contact-form {
   max-width: 500px;
@@ -438,9 +524,9 @@
 .form-input {
   width: 100%;
   padding: 12px 20px;
-  border: 2px solid rgba(100, 181, 246, 0.3);
+  border: 2px solid rgba(0, 212, 255, 0.4);
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
   color: #ffffff;
   font-size: 1rem;
   outline: none;
@@ -453,9 +539,9 @@
 }
 
 .form-input:focus {
-  border-color: #23d6d6;
-  box-shadow: 0 0 10px #23d6d6;
-  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #00d4ff;
+  box-shadow: 0 0 15px #00d4ff;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .form-textarea {
@@ -467,16 +553,16 @@
   padding: 12px 24px;
   border: none;
   border-radius: 25px;
-  background: linear-gradient(45deg, #23d6d6, #235c5c);
+  background: linear-gradient(45deg, #00d4ff, #00ff88);
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
   transition: box-shadow 0.3s, transform 0.2s;
-  text-shadow: 0 0 5px #23d6d6;
+  text-shadow: 0 0 5px #00d4ff;
 }
 
 .neon-button:hover {
-  box-shadow: 0 0 15px #23d6d6;
+  box-shadow: 0 0 20px #00d4ff;
   transform: translateY(-2px);
 }
 
@@ -504,17 +590,17 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: linear-gradient(45deg, #533483, #64b5f6);
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      box-shadow: 0 0 5px rgba(100, 181, 246, 0.15);
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
     }
 
     .social-icon:hover {
       transform: scale(1.1) rotate(360deg);
-      box-shadow: 0 0 10px rgba(100, 181, 246, 0.2);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
     }
 
     .social-icon img {
@@ -527,11 +613,11 @@
       position: fixed;
       top: 400px;
       right: -500px;  /* hidden initially */
-      background: rgba(115, 242, 242, 0.95);
+      background: rgba(0, 212, 255, 0.95);
       color: #000000;
       padding: 20px 25px;
       border-radius: 10px;
-      box-shadow: 0 0 15px #23d6d6;
+      box-shadow: 0 0 20px #00d4ff;
       font-size: 1rem;
       z-index: 9999;
       transition: right 0.5s ease;
@@ -548,14 +634,14 @@
     .neon-button {
       display: inline-block;
       padding: 15px 30px;
-      background: linear-gradient(45deg, #533483, #64b5f6);
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
       color: #ffffff;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
       font-size: 1.1rem;
       transition: all 0.3s ease;
-      box-shadow: 0 0 5px rgba(100, 181, 246, 0.2);
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
       margin: 10px;
       border: none;
       cursor: pointer;
@@ -563,8 +649,8 @@
 
     .neon-button:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
-      background: linear-gradient(45deg, #64b5f6, #81c784);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      background: linear-gradient(45deg, #00ff88, #00d4ff);
     }
 
     /* Modal Styles */
@@ -581,32 +667,32 @@
     }
 
     .modal-content {
-      background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+      background: linear-gradient(135deg, #0a0a1a, #1a1a2e);
       margin: 5% auto;
       padding: 30px;
       border-radius: 20px;
       width: 90%;
       max-width: 900px;
-      border: 1px solid #64b5f6;
-      box-shadow: 0 0 15px rgba(100, 181, 246, 0.2);
+      border: 2px solid #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
       position: relative;
     }
 
     .modal-close {
-      color: #81c784;
+      color: #00ff88;
       position: absolute;
       top: 15px;
       right: 25px;
       font-size: 35px;
       font-weight: bold;
       cursor: pointer;
-      text-shadow: 0 0 4px rgba(129, 199, 132, 0.2);
+      text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
       transition: all 0.3s ease;
     }
 
     .modal-close:hover {
-      color: #64b5f6;
-      text-shadow: 0 0 5px rgba(100, 181, 246, 0.3);
+      color: #00d4ff;
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
       transform: scale(1.1);
     }
 
@@ -615,8 +701,8 @@
       margin-bottom: 20px;
       border-radius: 15px;
       overflow: hidden;
-      border: 1px solid #64b5f6;
-      box-shadow: 0 0 8px rgba(100, 181, 246, 0.15);
+      border: 2px solid #00d4ff;
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
     }
 
     .swiper {
@@ -636,14 +722,39 @@
     footer {
       text-align: center;
       padding: 40px 20px;
-      background: #0f0f23;
-      color: #64b5f6;
-      text-shadow: 0 0 3px rgba(100, 181, 246, 0.2);
+      background: #0a0a1a;
+      color: #00d4ff;
+      text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
       font-size: 1.1rem;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(15, 15, 35, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 20px 0;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-menu li {
+        margin: 15px 0;
+      }
+
       header h1 { font-size: 2.5rem; }
       header h2 { font-size: 1.5rem; }
       .section-title { font-size: 2.5rem; }
@@ -660,14 +771,14 @@
     .view-gallery-btn {
    display: inline-block;
       padding: 15px 30px;
-      background: linear-gradient(45deg, #533483, #64b5f6);
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
       color: #ffffff;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
       font-size: 1.1rem;
       transition: all 0.3s ease;
-      box-shadow: 0 0 5px rgba(100, 181, 246, 0.2);
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
       margin: 10px;
       border: none;
       cursor: pointer;
@@ -675,17 +786,63 @@
 
 .view-gallery-btn:hover {
  transform: scale(1.02);
-      box-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
-      background: linear-gradient(45deg, #64b5f6, #81c784);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      background: linear-gradient(45deg, #00ff88, #00d4ff);
     }
 
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="#home">DharshanV </a>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#skills" class="nav-link">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a href="#experience" class="nav-link">Experience</a>
+        </li>
+        <li class="nav-item">
+          <a href="#projects" class="nav-link">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a href="#blogs" class="nav-link">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a href="#articles" class="nav-link">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a href="#resources" class="nav-link">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a href="#certifications" class="nav-link">Certifications</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link">Contact</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
   <!-- landing page -->
 
-  <header data-aos="zoom-out-up" data-aos-duration="2700">
+  <header id="home" data-aos="zoom-out-up" data-aos-duration="2700">
     <img src="documents/profile.jpg" alt="Dharshan V" class="profile-img" />
     <h1>Dharshan V</h1>
     <h2>IT Student and Tech Enthusiast</h2>
@@ -694,7 +851,7 @@
 
   <!-- about -->
 
-  <section class="full-section section-about" data-aos="zoom-in-down" data-aos-duration="1500">
+  <section id="about" class="full-section section-about" data-aos="zoom-in-down" data-aos-duration="1500">
     <h2 class="section-title">About Me</h2>
     <div class="about-content">
       <div class="about-image">
@@ -713,7 +870,7 @@
 
   <!-- skills -->
 
-  <section class="full-section section-skills" data-aos="zoom-in-up" data-aos-duration="1500">
+  <section id="skills" class="full-section section-skills" data-aos="zoom-in-up" data-aos-duration="1500">
     <h2 class="section-title">Skills & Technologies</h2>
     <div class="skills-icons">
       <div class="icon-item" title="Python">
@@ -765,7 +922,7 @@
 
   <!-- experience -->
 
-  <section class="full-section section-experience" data-aos="zoom-in-down" data-aos-duration="1500">
+  <section id="experience" class="full-section section-experience" data-aos="zoom-in-down" data-aos-duration="1500">
     <h2 class="section-title">Experience</h2>
     <div class="card-grid">
       <div class="neon-card" 
@@ -783,7 +940,7 @@
 
   <!-- porjects -->
 
-  <section class="full-section section-projects" data-aos="zoom-in-down" data-aos-duration="1500">
+  <section id="projects" class="full-section section-projects" data-aos="zoom-in-down" data-aos-duration="1500">
     <h2 class="section-title">Projects</h2>
     <div class="card-grid">
       <div class="neon-card" 
@@ -828,9 +985,84 @@
     </div>
   </section>
 
+  <!-- Blogs Section -->
+  <section id="blogs" class="full-section section-blogs" data-aos="zoom-in-up" data-aos-duration="1500">
+    <h2 class="section-title">Blogs</h2>
+    <div class="card-grid">
+      <div class="neon-card">
+        <img src="documents/blog1.jpg" alt="Tech Blog" />
+        <h3>Getting Started with Python Development</h3>
+        <p>Learn the fundamentals of Python programming and start your journey in software development.</p>
+        <a href="#" class="neon-button">Read More</a>
+      </div>
+      <div class="neon-card">
+        <img src="documents/blog2.jpg" alt="Web Dev Blog" />
+        <h3>Modern Web Development Trends</h3>
+        <p>Explore the latest trends and technologies shaping the future of web development.</p>
+        <a href="#" class="neon-button">Read More</a>
+      </div>
+      <div class="neon-card">
+        <img src="documents/blog3.jpg" alt="AI Blog" />
+        <h3>AI in Modern Applications</h3>
+        <p>Discover how artificial intelligence is revolutionizing software development and user experience.</p>
+        <a href="#" class="neon-button">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="articles" class="full-section section-articles" data-aos="zoom-in-down" data-aos-duration="1500">
+    <h2 class="section-title">Articles</h2>
+    <div class="card-grid">
+      <div class="neon-card">
+        <img src="documents/article1.jpg" alt="Tech Article" />
+        <h3>Flutter vs React Native: A Comprehensive Comparison</h3>
+        <p>Deep dive into the differences between Flutter and React Native for cross-platform development.</p>
+        <a href="#" class="neon-button">Read Article</a>
+      </div>
+      <div class="neon-card">
+        <img src="documents/article2.jpg" alt="Programming Article" />
+        <h3>Best Practices for Clean Code</h3>
+        <p>Essential principles and practices for writing maintainable and readable code.</p>
+        <a href="#" class="neon-button">Read Article</a>
+      </div>
+      <div class="neon-card">
+        <img src="documents/article3.jpg" alt="Career Article" />
+        <h3>Building a Developer Portfolio</h3>
+        <p>Step-by-step guide to creating an impressive portfolio that showcases your skills.</p>
+        <a href="#" class="neon-button">Read Article</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Resources Section -->
+  <section id="resources" class="full-section section-resources" data-aos="zoom-in-up" data-aos-duration="1500">
+    <h2 class="section-title">Resources</h2>
+    <div class="card-grid">
+      <div class="neon-card">
+        <img src="documents/resource1.jpg" alt="Learning Resource" />
+        <h3>Free Programming Courses</h3>
+        <p>Curated list of free online courses to learn programming from beginner to advanced levels.</p>
+        <a href="#" class="neon-button">Access Resources</a>
+      </div>
+      <div class="neon-card">
+        <img src="documents/resource2.jpg" alt="Tools Resource" />
+        <h3>Essential Developer Tools</h3>
+        <p>Collection of free tools and software that every developer should have in their toolkit.</p>
+        <a href="#" class="neon-button">Access Resources</a>
+      </div>
+      <div class="neon-card">
+        <img src="documents/resource3.jpg" alt="Templates Resource" />
+        <h3>Code Templates & Snippets</h3>
+        <p>Reusable code templates and snippets to speed up your development workflow.</p>
+        <a href="#" class="neon-button">Access Resources</a>
+      </div>
+    </div>
+  </section>
+
   <!-- certifications -->
 
-  <section class="full-section section-certifications" data-aos="zoom-in-up" data-aos-duration="1500">
+  <section id="certifications" class="full-section section-certifications" data-aos="zoom-in-up" data-aos-duration="1500">
     <h2 class="section-title">Certifications & Internships</h2>
     
     <div class="cert-grid">
@@ -865,7 +1097,7 @@
 
   
   <!-- Contact Section -->
-  <section class="full-section section-contact" data-aos="zoom-in-down" data-aos-duration="1500">
+  <section id="contact" class="full-section section-contact" data-aos="zoom-in-down" data-aos-duration="1500">
     <h2 class="section-title">Get In Touch</h2>
     <div class="contact-content">
       <p style="font-size: 1.3rem; margin-bottom: 30px; color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);">
@@ -1185,8 +1417,61 @@ setTimeout(() => {
   thankYouPopup.classList.remove('show');
 }, 4000);
 
-contactForm.reset();
+        contactForm.reset();
       }
+    });
+
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+    }));
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Active navigation highlighting
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('.full-section, header');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
