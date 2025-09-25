@@ -23,7 +23,7 @@ Hi, I'm **Dharsh** from Hosur, Tamil Nadu, India — a tech enthusiast and a sel
 ### 🌐 Portfolio Website
 - A responsive portfolio showcasing my projects and skills.
 - **Built With:** HTML, CSS, JavaScript
-- **Live Demo:** [https://dharsh606.github.io/DharshanVportfolio/](https://dharsh606.github.io/DharshanVportfolio/)
+- **Live Demo:** [https://dharshanvportfolio.netlify.app/](https://dharshanvportfolio.netlify.app/)
 
 ## 📞 Contact
 
