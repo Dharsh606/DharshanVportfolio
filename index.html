@@ -35,13 +35,13 @@
     }
 
     .nav-container {
-      max-width: 1400px;
+      max-width: 1500px;
       margin: 0 auto;
       display: flex;
       justify-content: flex-start;
       align-items: center;
       padding: 0 20px;
-      gap: 50px;
+      gap: 10px;
     }
 
     .nav-logo a {
@@ -63,9 +63,9 @@
     .nav-link {
       color: #ffffff;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 400;
       transition: all 0.3s ease;
-      padding: 8px 16px;
+      padding: 5px 12px;
       border-radius: 20px;
     }
 
@@ -631,8 +631,8 @@
     .neon-button {
       display: inline-block;
       padding: 15px 30px;
-      background: linear-gradient(45deg, #00d4ff, #00ff88);
-      color: #ffffff;
+      background: linear-gradient(45deg, #36b5d2, #0d9c59);
+      color: #fdfdfd;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
@@ -724,6 +724,35 @@
       text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
       font-size: 1.1rem;
     }
+
+    .section-resume {
+  background: linear-gradient(135deg, #2b3a55 0%, #1e2a3f 50%, #142033 100%);
+}
+
+.resume-container {
+  max-width: 1100px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.resume-embed {
+  width: 60%;
+  height: 40vh;
+  border: 1px solid #1b9eb9;
+  border-radius: 8px;
+  box-shadow: 0 0 18px rgba(20, 150, 176, 0.957);
+  background: rgba(187, 116, 116, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.resume-button-large {
+  padding: 18px 36px;
+  font-size: 1.5rem;
+  border-radius: 36px;
+}
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -821,6 +850,9 @@
         </li>
         <li class="nav-item">
           <a href="#certifications" class="nav-link">Certifications</a>
+        </li>
+        <li class="nav-item">
+           <a href="#resume" class="nav-link">Resume</a>
         </li>
         <li class="nav-item">
           <a href="#contact" class="nav-link">Contact</a>
@@ -1089,6 +1121,13 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     </div>
   </section>
 
+  <!-- Resume Section -->
+  <section id="resume" class="full-section section-resume" data-aos="zoom-in-up" data-aos-duration="1500">
+    <h2 class="section-title">Resume</h2>
+    <div class="resume-container">
+      <a href="documents/DHARSHAN Resume.pdf" target="_blank" class="neon-button resume-button-large">View Resume</a>
+  </section>
+ 
   
   <!-- Contact Section -->
   <section id="contact" class="full-section section-contact" data-aos="zoom-in-down" data-aos-duration="1500">
@@ -1158,8 +1197,6 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
       </div>
 
       <div style="margin-top: 40px;">
-        <a href="documents/DHARSHAN Resume.pdf" target="_blank" class="neon-button">Download Resume</a>
-        <a href="documents/DHARSHAN Resume.pdf" target="_blank" class="neon-button">View Resume</a>
         <a href="mailto:dharshan.vreddy2819@gmail.com" class="neon-button">Send Email</a>
       </div>
     </div>
