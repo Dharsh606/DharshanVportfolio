@@ -175,7 +175,7 @@
     /* Full Screen Sections */
     .full-section {
       min-height: 100vh;
-      padding: 80px 20px;
+      padding: 120px 20px 80px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -216,15 +216,20 @@
       background: linear-gradient(135deg, #33486b 0%, #385580 50%, #374966 100%);
     }
 
-    .
     /* Section Titles */
     .section-title {
-      font-size: 3.5rem;
-      color: #00d4ff;
+      font-size: 3rem;
+      color: #ffffff;
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 0;
       text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       animation: sectionTitleGlow 3s ease-in-out infinite alternate;
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1000px;
     }
 
     @keyframes sectionTitleGlow {
@@ -281,6 +286,37 @@
       gap: 40px;
       max-width: 1000px;
       width: 100%;
+    }
+
+    /* Project Filters */
+    .project-filters {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .project-filter-btn {
+      padding: 10px 25px;
+      border-radius: 999px;
+      border: 2px solid rgba(0, 212, 255, 0.4);
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px rgba(0, 212, 255, 0.4);
+    }
+
+    .project-filter-btn:hover,
+    .project-filter-btn.active {
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
+      color: #0a0a1a;
+      border-color: transparent;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
     }
 
     .icon-item {
@@ -729,25 +765,6 @@
   background: linear-gradient(135deg, #2b3a55 0%, #1e2a3f 50%, #142033 100%);
 }
 
-.resume-container {
-  max-width: 1100px;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.resume-embed {
-  width: 60%;
-  height: 40vh;
-  border: 1px solid #1b9eb9;
-  border-radius: 8px;
-  box-shadow: 0 0 18px rgba(20, 150, 176, 0.957);
-  background: rgba(187, 116, 116, 0.85);
-  backdrop-filter: blur(6px);
-}
-
 .resume-button-large {
   padding: 18px 36px;
   font-size: 1.5rem;
@@ -783,7 +800,7 @@
 
       header h1 { font-size: 2.5rem; }
       header h2 { font-size: 1.5rem; }
-      .section-title { font-size: 2.5rem; }
+      .section-title { font-size: 3rem; top: 30px; }
       .about-content { flex-direction: column; gap: 30px; }
       .about-image img { width: 280px; height: 350px; }
       .skills-icons { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 20px; }
@@ -976,12 +993,19 @@
 
   <section id="projects" class="full-section section-projects" data-aos="zoom-in-down" data-aos-duration="1500">
     <h2 class="section-title">Projects</h2>
+    <div class="project-filters" aria-label="Project filters">
+      <button class="project-filter-btn active" data-filter="all" type="button">All</button>
+      <button class="project-filter-btn" data-filter="web" type="button">Web</button>
+      <button class="project-filter-btn" data-filter="ai" type="button">AI & Tools</button>
+      <button class="project-filter-btn" data-filter="desktop" type="button">Desktop</button>
+    </div>
     <div class="card-grid">
       <div class="neon-card" 
            data-title="RC World – E-commerce Website" 
            data-description="Full-stack site for customizable RC vehicles with responsive design and shopping features."
            data-images='["documents/rcspot/projectRC1.png","documents/rcspot/projectRC2.png","documents/rcspot/projectRC3.png","documents/rcspot/projectRC4.png","documents/rcspot/projectRC5.png","documents/rcspot/projectRC6.png"]'
-           data-link="https://dharsh606.github.io/rcspot/">
+           data-link="https://dharsh606.github.io/rcspot/"
+           data-categories="web">
         <img src="documents/rcspot/logo.png" alt="RC World Project" />
         <h3>RC World – E-commerce Website</h3>
         <p>Full-stack site for customizable RC vehicles with responsive design and shopping features.</p>
@@ -995,7 +1019,8 @@
            data-title="D SkyCast" 
            data-description="A weather forecasting app using OpenWeatherMap API. It displays current weather conditions for any city entered by the user. You can see the current city Weather in °C/°F" 
            data-images='["documents/skycast/weather1.png","documents/skycast/weather2.png","documents/skycast/weather3.png","documents/skycast/weather4.png"]' 
-           data-link="https://dharsh606.github.io/weather-project/">
+           data-link="https://dharsh606.github.io/weather-project/"
+           data-categories="web">
         <img src="documents/skycast/weatherlogo.png" alt="D Weather App Preview" />
         <h3>D SkyCast – Weather Forecast App</h3>
         <p>A weather forecasting app using OpenWeatherMap API.</p>
@@ -1009,7 +1034,8 @@
            data-title="D lifesync AI mood tracker" 
            data-description="LifeSync is an intelligent desktop application that empowers users to monitor their emotional well-being through daily mood tracking, personalized AI wellness suggestions, and insightful visual analytics — all developed with Python, PyQt5, and SQLite for a smooth, secure, and offline-first experience." 
            data-images='["documents/lifesync/main.png","documents/lifesync/emojis.png","documents/lifesync/streak.png","documents/lifesync/log.png","documents/lifesync/chart.png"]' 
-           data-link="https://github.com/Dharsh606/Lifesync-AI-mood-Tracker">
+           data-link="https://github.com/Dharsh606/Lifesync-AI-mood-Tracker"
+           data-categories="desktop,ai">
         <img src="documents/lifesync/logo.png" alt="D lifesync AI mood tracker Preview" />
         <h3>D lifesync AI mood tracker App</h3>
         <p>lifesync AI mood tracker app using Python & SQLite.</p>
@@ -1024,7 +1050,8 @@
             data-description="D-Write-AI – AI Writing Assistant
 Developed an AI-powered writing assistant that helps users improve grammar, refine tone, and generate content ideas. Built with HTML, CSS, and JavaScript and deployed on GitHub Pages for online access." 
             data-images='["documents/writeAI/home.png","documents/writeAI/draft.png","documents/writeAI/bloggenerated.png","documents/writeAI/saveoption.png"]' 
-            data-link="https://dharsh606.github.io/D-write-AI/">
+            data-link="https://dharsh606.github.io/D-write-AI/"
+            data-categories="ai,web">
           <img src="documents/writeAI/logo.png" alt="D - Write AI Preview" />
           <h3>D - Write AI</h3>
           <p>D-Write-AI: An AI-powered web-based writing assistant.</p>
@@ -1039,7 +1066,8 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
              data-title="Wander Dharsh - Travel Booking Website" 
              data-description="Wander Dharsh is a modern and responsive travel booking web platform developed by Dharshan V. It lets users explore, plan, and book various trips — from college and family tours to honeymoon getaways — with smooth navigation, elegant UI, and seamless booking flow." 
              data-images='["documents/wanderdharsh/1.png","documents/wanderdharsh/2.png","documents/wanderdharsh/3.png","documents/wanderdharsh/4.png","documents/wanderdharsh/5.png"]' 
-             data-link="https://dharsh606.github.io/Wander_Dharsh-web/">
+             data-link="https://dharsh606.github.io/Wander_Dharsh-web/"
+             data-categories="web">
           <img src="documents/wanderdharsh/logo.png" alt="Wander Dharsh Website Preview" />
           <h3>Wander Dharsh - Travel Booking Website</h3>
           <p>A modern trip booking website built with HTML, Tailwind CSS & JS by Dharshan V.</p>
@@ -1146,14 +1174,29 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
           <li><a href="licenses/Coursera.pdf" target="_blank">Getting Started With Microsoft Excel – COURSERA</a></li>
         </ul>
       </div>
+
+      
+      <!-- Hackathon & Competition-->
+
+
+       <div class="cert-column">
+        <h4>Hackathon & Competitions</h4>
+        <ul>
+          <li><a href="certificates/coding quiz.pdf" target="_blank">CodingQuiz – Tough Tongue AI</a></li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
   <!-- Resume Section -->
   <section id="resume" class="full-section section-resume" data-aos="zoom-in-up" data-aos-duration="1500">
     <h2 class="section-title">Resume</h2>
-    <div class="resume-container">
+        <p style="font-size: 2rem; margin-bottom: 20px; color: #ffffff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);">
+          Explore my professional journey, skills, and accomplishments in my resume.
+        </p>
       <a href="documents/DHARSHAN Resume.pdf" target="_blank" class="neon-button resume-button-large">View Resume</a>
+    </div>
   </section>
  
   
@@ -1532,6 +1575,28 @@ setTimeout(() => {
         }
       });
     });
+
+    // Project filtering
+    const filterButtons = document.querySelectorAll('.project-filter-btn');
+    const projectCards = document.querySelectorAll('#projects .neon-card');
+
+    function applyProjectFilter(filter) {
+      projectCards.forEach(card => {
+        const categories = (card.dataset.categories || '').split(',').map(c => c.trim()).filter(Boolean);
+        const shouldShow = filter === 'all' || categories.includes(filter);
+        card.style.display = shouldShow ? 'block' : 'none';
+      });
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        applyProjectFilter(button.dataset.filter);
+      });
+    });
+
+    applyProjectFilter('all');
   </script>
 </body>
 </html>
