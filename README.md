@@ -34,3 +34,4 @@ Hi, I'm **Dharsh** from Hosur, Tamil Nadu, India — a tech enthusiast and a sel
 ---
 
 Thanks for visiting my portfolio! Feel free to reach out if you'd like to collaborate or chat about tech.
+
