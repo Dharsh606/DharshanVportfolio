@@ -79,6 +79,41 @@
       padding: 0;
     }
 
+    /* Simple mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+    }
+
+    .hamburger:hover {
+      background: rgba(0, 212, 255, 0.15);
+    }
+
+    .bar {
+      width: 24px;
+      height: 3px;
+      background: #00d4ff;
+      margin: 3px 0;
+      border-radius: 999px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .hamburger.is-open .bar:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .hamburger.is-open .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.is-open .bar:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
     .nav-link {
       color: #ffffff;
       text-decoration: none;
@@ -832,23 +867,36 @@
     @media (max-width: 768px) {
       .nav-container {
         padding: 0 15px;
-        flex-wrap: wrap;
       }
 
-      .nav-logo a {
-        font-size: 1.5rem;
-        margin-right: 10px;
+      .hamburger {
+        display: flex;
+        margin-left: auto;
       }
 
       .nav-menu {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
+        position: fixed;
+        inset: 70px 0 0 0;
+        background: rgba(10, 10, 26, 0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 24px 16px 32px;
+        gap: 16px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1500;
+      }
+
+      .nav-menu.is-open {
+        transform: translateX(0);
       }
 
       .nav-link {
-        padding: 8px 12px;
-        font-size: 0.9rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px 18px;
       }
 
       header {
@@ -1157,6 +1205,11 @@
       <div class="nav-logo">
         <a href="#home">DV </a>
       </div>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
       <ul class="nav-menu">
         <li class="nav-item">
           <a href="#home" class="nav-link">Home</a>
@@ -1891,7 +1944,20 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     });
 
 
-    // Smooth scrolling for navigation links
+    // Simple mobile navigation slider
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('is-open');
+        hamburger.classList.toggle('is-open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+      });
+    }
+
+    // Smooth scrolling for navigation links (also close mobile menu)
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -1903,6 +1969,14 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
             behavior: 'smooth',
             block: 'start'
           });
+        }
+
+        // Close mobile menu after click
+        if (window.innerWidth <= 768 && navMenu && hamburger) {
+          navMenu.classList.remove('is-open');
+          hamburger.classList.remove('is-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = 'auto';
         }
       });
     });
