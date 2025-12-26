@@ -80,39 +80,6 @@
     }
 
     /* Simple mobile hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 6px;
-      transition: background 0.2s ease;
-    }
-
-    .hamburger:hover {
-      background: rgba(0, 212, 255, 0.15);
-    }
-
-    .bar {
-      width: 24px;
-      height: 3px;
-      background: #00d4ff;
-      margin: 3px 0;
-      border-radius: 999px;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .hamburger.is-open .bar:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-
-    .hamburger.is-open .bar:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.is-open .bar:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
-    }
 
     .nav-link {
       color: #ffffff;
@@ -867,73 +834,26 @@
     @media (max-width: 768px) {
       .nav-container {
         padding: 0 15px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
-      .hamburger {
-        display: flex;
-        margin-left: auto;
-        z-index: 2001;
-        position: relative;
-      }
-
-      /* Backdrop overlay */
-      .nav-backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
+      .nav-logo {
         width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        z-index: 1499;
-        pointer-events: none;
-      }
-
-      .nav-backdrop.is-open {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+        text-align: center;
+        margin-bottom: 15px;
       }
 
       .nav-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 280px;
-        max-width: 85%;
-        height: 100vh;
-        background: rgba(10, 10, 26, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding: 80px 20px 30px;
-        gap: 0;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 1500;
-        overflow-y: auto;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .nav-menu.is-open {
-        transform: translateX(0);
-      }
-
-      .nav-menu li {
         width: 100%;
-        margin: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
       }
 
       .nav-link {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 15px 20px;
-        border-radius: 8px;
-        margin-bottom: 5px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
       }
 
       header {
@@ -1242,12 +1162,6 @@
       <div class="nav-logo">
         <a href="#home">DV </a>
       </div>
-      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <div class="nav-backdrop"></div>
       <ul class="nav-menu">
         <li class="nav-item">
           <a href="#home" class="nav-link">Home</a>
@@ -1982,70 +1896,7 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     });
 
 
-    // Simple mobile navigation slider - slides from left
-    const navMenu = document.querySelector('.nav-menu');
-    const hamburger = document.querySelector('.hamburger');
-    const navBackdrop = document.querySelector('.nav-backdrop');
-
-    function closeMobileMenu() {
-      if (navMenu && hamburger) {
-        navMenu.classList.remove('is-open');
-        hamburger.classList.remove('is-open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        if (navBackdrop) {
-          navBackdrop.classList.remove('is-open');
-        }
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    function openMobileMenu() {
-      if (navMenu && hamburger) {
-        navMenu.classList.add('is-open');
-        hamburger.classList.add('is-open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        if (navBackdrop) {
-          navBackdrop.classList.add('is-open');
-        }
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    if (hamburger && navMenu) {
-      hamburger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (navMenu.classList.contains('is-open')) {
-          closeMobileMenu();
-        } else {
-          openMobileMenu();
-        }
-      });
-
-      // Close menu when clicking on backdrop
-      if (navBackdrop) {
-        navBackdrop.addEventListener('click', () => {
-          closeMobileMenu();
-        });
-      }
-
-      // Close menu when clicking outside menu (on mobile)
-      document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && navMenu.classList.contains('is-open')) {
-          if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-            closeMobileMenu();
-          }
-        }
-      });
-
-      // Close menu on escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
-          closeMobileMenu();
-        }
-      });
-    }
-
-    // Smooth scrolling for navigation links (also close mobile menu)
+    // Smooth scrolling for navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -2057,11 +1908,6 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
             behavior: 'smooth',
             block: 'start'
           });
-        }
-
-        // Close mobile menu after click
-        if (window.innerWidth <= 768) {
-          closeMobileMenu();
         }
       });
     });
