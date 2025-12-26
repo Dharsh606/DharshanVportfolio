@@ -45,8 +45,18 @@
       backdrop-filter: blur(10px);
       z-index: 2000;
       padding: 15px 0;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
       overflow-x: hidden;
+    }
+
+    .navbar.hide {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    .navbar.show {
+      transform: translateY(0);
+      opacity: 1;
     }
 
     .nav-container {
@@ -1667,6 +1677,38 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     AOS.init({
       duration: 1000,
       once: true
+    });
+
+    // Navbar hide/show on scroll
+    const navbar = document.querySelector('.navbar');
+    let lastScrollTop = 0;
+    let scrollThreshold = 100; // Minimum scroll distance before hiding/showing
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Only hide/show if scrolled more than threshold
+      if (Math.abs(scrollTop - lastScrollTop) < scrollThreshold) {
+        return;
+      }
+
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down - hide navbar
+        navbar.classList.remove('show');
+        navbar.classList.add('hide');
+      } else {
+        // Scrolling up - show navbar
+        navbar.classList.remove('hide');
+        navbar.classList.add('show');
+      }
+
+      // Always show navbar at the top of the page
+      if (scrollTop < 100) {
+        navbar.classList.remove('hide');
+        navbar.classList.add('show');
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
 
     const modal = document.getElementById('projectModal');
