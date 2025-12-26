@@ -100,35 +100,6 @@
       text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
     }
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      z-index: 2001;
-      padding: 5px;
-      position: relative;
-      pointer-events: auto;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
-
-    .bar {
-      width: 25px;
-      height: 3px;
-      background: #00d4ff;
-      margin: 3px 0;
-      transition: 0.3s;
-    }
 
     /* Header Section */
     header {
@@ -859,13 +830,9 @@
     }
 
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-        margin-left: auto;
-      }
-
       .nav-container {
         padding: 0 15px;
+        flex-wrap: wrap;
       }
 
       .nav-logo a {
@@ -874,39 +841,14 @@
       }
 
       .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: rgba(15, 15, 35, 0.98);
-        width: 100%;
-        max-width: 100vw;
-        text-align: center;
-        transition: left 0.3s ease;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 20px 0;
-        margin: 0;
-        gap: 0;
-        height: calc(100vh - 70px);
-        overflow-y: auto;
-        overflow-x: hidden;
-        backdrop-filter: blur(10px);
-      }
-
-      .nav-menu.active {
-        left: 0;
-      }
-
-      .nav-menu li {
-        margin: 10px 0;
-        width: 100%;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .nav-link {
-        display: block;
-        padding: 15px 20px;
-        width: 100%;
-        text-align: center;
+        padding: 8px 12px;
+        font-size: 0.9rem;
       }
 
       header {
@@ -1247,11 +1189,6 @@
           <a href="#contact" class="nav-link">Contact</a>
         </li>
       </ul>
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
     </div>
   </nav>
 
@@ -1953,44 +1890,6 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
       }
     });
 
-    // Mobile Navigation Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (hamburger && navMenu) {
-      hamburger.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent event bubbling
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        if (navMenu.classList.contains('active')) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = 'auto';
-        }
-      });
-    }
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }));
-
-    // Close mobile menu when clicking outside
-    if (hamburger && navMenu) {
-      document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && navMenu.classList.contains('active')) {
-          if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-          }
-        }
-      });
-    }
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
