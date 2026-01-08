@@ -699,12 +699,13 @@
       box-shadow: 0 0 20px #00d4ff;
       font-size: 1rem;
       z-index: 9999;
-      transition: transform 0.5s ease, opacity 0.3s ease;
+      transition: transform 0.5s ease, opacity 0.3s ease, background 0.3s ease;
       max-width: 90%;
       text-align: center;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
+      font-weight: 500;
     }
 
     .thank-you-popup.show {
@@ -712,6 +713,11 @@
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
+    }
+
+    .thank-you-popup p {
+      margin: 0;
+      word-wrap: break-word;
     }
 
 
@@ -1712,6 +1718,7 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     AOS.init({
       duration: 1000,
@@ -1886,9 +1893,17 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     // Create particles periodically
     setInterval(createParticle, 3000);
 
-    // Contact Form Validation
+    // Initialize EmailJS
+   
+    (function(){
+      emailjs.init("SQ7T33blggof_N0Bi");
+    })();
+
+    // Contact Form Validation and Submission
     const contactForm = document.getElementById('contactForm');
     const thankYouPopup = document.getElementById('thankYouPopup');
+    const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+    
     const formInputs = {
       name: document.getElementById('name'),
       email: document.getElementById('email'),
@@ -1908,12 +1923,46 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
       thankYouPopup.classList.remove('show');
     }
 
-    function showThankYou() {
+    function showThankYou(message = "Thank you for your message! I'll get back to you soon.") {
       if (!thankYouPopup) return;
+      thankYouPopup.querySelector('p').textContent = message;
       thankYouPopup.classList.add('show');
       setTimeout(() => {
         thankYouPopup.classList.remove('show');
-      }, 4000);
+      }, 5000);
+    }
+
+    function showError(message) {
+      if (!thankYouPopup) return;
+      const popupText = thankYouPopup.querySelector('p');
+      if (popupText) {
+        popupText.textContent = message || "Oops! Something went wrong. Please try again later.";
+      }
+      thankYouPopup.style.background = 'rgba(255, 107, 107, 0.95)';
+      thankYouPopup.style.boxShadow = '0 0 20px #ff6b6b';
+      thankYouPopup.classList.add('show');
+      setTimeout(() => {
+        thankYouPopup.classList.remove('show');
+        setTimeout(() => {
+          thankYouPopup.style.background = 'rgba(0, 212, 255, 0.95)';
+          thankYouPopup.style.boxShadow = '0 0 20px #00d4ff';
+        }, 300);
+      }, 5000);
+    }
+
+    function setButtonLoading(loading) {
+      if (!submitButton) return;
+      if (loading) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        submitButton.style.opacity = '0.7';
+        submitButton.style.cursor = 'not-allowed';
+      } else {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+        submitButton.style.opacity = '1';
+        submitButton.style.cursor = 'pointer';
+      }
     }
 
     function validateEmail(email) {
@@ -1921,15 +1970,19 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
       return re.test(email);
     }
 
-    function showError(field, message) {
-      formErrors[field].textContent = message;
-      formErrors[field].classList.add('show');
-      formInputs[field].style.borderColor = '#ff6b6b';
+    function showFieldError(field, message) {
+      if (formErrors[field] && formInputs[field]) {
+        formErrors[field].textContent = message;
+        formErrors[field].classList.add('show');
+        formInputs[field].style.borderColor = '#ff6b6b';
+      }
     }
 
     function hideError(field) {
-      formErrors[field].classList.remove('show');
-      formInputs[field].style.borderColor = 'rgba(100, 181, 246, 0.15)';
+      if (formErrors[field] && formInputs[field]) {
+        formErrors[field].classList.remove('show');
+        formInputs[field].style.borderColor = 'rgba(100, 181, 246, 0.15)';
+      }
     }
 
     Object.keys(formInputs).forEach(field => {
@@ -1938,43 +1991,67 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
       });
     });
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      let isValid = true;
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let isValid = true;
 
-      // Validate name
-      if (formInputs.name.value.trim() === '') {
-        showError('name', 'Please enter your name');
-        isValid = false;
-      }
+        // Validate name
+        if (formInputs.name.value.trim() === '') {
+          showFieldError('name', 'Please enter your name');
+          isValid = false;
+        }
 
-      // Validate email
-      if (formInputs.email.value.trim() === '') {
-        showError('email', 'Please enter your email');
-        isValid = false;
-      } else if (!validateEmail(formInputs.email.value)) {
-        showError('email', 'Please enter a valid email');
-        isValid = false;
-      }
+        // Validate email
+        if (formInputs.email.value.trim() === '') {
+          showFieldError('email', 'Please enter your email');
+          isValid = false;
+        } else if (!validateEmail(formInputs.email.value)) {
+          showFieldError('email', 'Please enter a valid email');
+          isValid = false;
+        }
 
-      // Validate subject
-      if (formInputs.subject.value.trim() === '') {
-        showError('subject', 'Please enter a subject');
-        isValid = false;
-      }
+        // Validate subject
+        if (formInputs.subject.value.trim() === '') {
+          showFieldError('subject', 'Please enter a subject');
+          isValid = false;
+        }
 
-      // Validate message
-      if (formInputs.message.value.trim() === '') {
-        showError('message', 'Please enter your message');
-        isValid = false;
-      }
+        // Validate message
+        if (formInputs.message.value.trim() === '') {
+          showFieldError('message', 'Please enter your message');
+          isValid = false;
+        }
 
-      if (isValid) {
-        // Simulate form submission
-        showThankYou();
-        contactForm.reset();
-      }
-    });
+        if (isValid) {
+          // Set loading state
+          setButtonLoading(true);
+
+          const templateParams = {
+            from_name: formInputs.name.value.trim(),
+            from_email: formInputs.email.value.trim(),
+            subject: formInputs.subject.value.trim(),
+            message: formInputs.message.value.trim(),
+            to_name: 'Dharshan V',
+            reply_to: formInputs.email.value.trim()
+          };
+
+          // Send email using EmailJS
+          emailjs.send('service_mxg2y0e', 'template_6dxk9hm', templateParams)
+            .then((response) => {
+              console.log('SUCCESS!', response.status, response.text);
+              showThankYou('Thank you for your message! I\'ll get back to you soon.');
+              contactForm.reset();
+              setButtonLoading(false);
+            })
+            .catch((error) => {
+              console.error('FAILED...', error);
+              showError('Failed to send message. Please try again or email me directly at dharshan.vreddy2819@gmail.com');
+              setButtonLoading(false);
+            });
+        }
+      });
+    }
 
 
     // Smooth scrolling for navigation links
