@@ -2027,27 +2027,59 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
           // Set loading state
           setButtonLoading(true);
 
-          const templateParams = {
-            from_name: formInputs.name.value.trim(),
-            from_email: formInputs.email.value.trim(),
-            subject: formInputs.subject.value.trim(),
-            message: formInputs.message.value.trim(),
+          const userEmail = formInputs.email.value.trim();
+          const userName = formInputs.name.value.trim();
+          const userSubject = formInputs.subject.value.trim();
+          const userMessage = formInputs.message.value.trim();
+
+          // Template params for admin email (original message)
+          const adminTemplateParams = {
+            from_name: userName,
+            from_email: userEmail,
+            subject: userSubject,
+            message: userMessage,
             to_name: 'Dharshan V',
-            reply_to: formInputs.email.value.trim()
+            reply_to: userEmail
           };
 
-          // Send email using EmailJS
-          emailjs.send('service_mxg2y0e', 'template_6dxk9hm', templateParams)
-            .then((response) => {
-              console.log('SUCCESS!', response.status, response.text);
-              showThankYou('Thank you for your message! I\'ll get back to you soon.');
+          // Template params for thank you email to user
+          const thankYouTemplateParams = {
+            to_name: userName,
+            to_email: userEmail,
+            from_name: 'Dharshan V',
+            subject: 'Thank you for contacting me!'
+          };
+
+          // Send email to admin (original message)
+          const adminEmailPromise = emailjs.send('service_mxg2y0e', 'template_6dxk9hm', adminTemplateParams);
+          
+          // Send thank you email to user
+          const thankYouEmailPromise = emailjs.send('service_mxg2y0e', 'template_77y2x8l', thankYouTemplateParams);
+
+          // Send both emails
+          Promise.all([adminEmailPromise, thankYouEmailPromise])
+            .then((responses) => {
+              console.log('SUCCESS! Admin email:', responses[0].status, responses[0].text);
+              console.log('SUCCESS! Thank you email:', responses[1].status, responses[1].text);
+              showThankYou('Thank you for your message! I\'ll get back to you soon. Check your email for confirmation.');
               contactForm.reset();
               setButtonLoading(false);
             })
             .catch((error) => {
               console.error('FAILED...', error);
-              showError('Failed to send message. Please try again or email me directly at dharshan.vreddy2819@gmail.com');
-              setButtonLoading(false);
+              // Fallback: send admin email separately if both fail
+              emailjs.send('service_mxg2y0e', 'template_6dxk9hm', adminTemplateParams)
+                .then((response) => {
+                  console.log('Admin email sent successfully:', response.status);
+                  showThankYou('Thank you for your message! I\'ll get back to you soon.');
+                  contactForm.reset();
+                  setButtonLoading(false);
+                })
+                .catch((adminError) => {
+                  console.error('Admin email also failed:', adminError);
+                  showError('Failed to send message. Please try again or email me directly at dharshan.vreddy2819@gmail.com');
+                  setButtonLoading(false);
+                });
             });
         }
       });
