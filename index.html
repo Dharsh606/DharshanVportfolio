@@ -376,16 +376,16 @@
     /* Experience and Projects Grid */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1400px;
       width: 100%;
     }
 
     .neon-card {
       background: rgba(255, 255, 255, 0.12);
-      padding: 30px;
-      border-radius: 20px;
+      padding: 20px;
+      border-radius: 15px;
       border: 2px solid rgba(0, 212, 255, 0.25);
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
@@ -425,40 +425,43 @@
 
     .neon-card img {
       width: 100%;
-      max-width: 150px;
-      height: 150px;
+      max-width: 120px;
+      height: 120px;
       object-fit: cover;
-      border-radius: 15px;
-      margin-bottom: 20px;
+      border-radius: 12px;
+      margin-bottom: 15px;
       border: 1px solid #81c784;
       box-shadow: 0 0 5px rgba(129, 199, 132, 0.2);
     }
 
     .neon-card h3 {
       color: #00d4ff;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
       text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
     }
 
     .neon-card p {
       color: #ffffff;
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.5;
       text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
       word-wrap: break-word;
       overflow-wrap: break-word;
+      margin-bottom: 10px;
     }
 
     .neon-card a {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
+      margin-top: 12px;
+      margin-right: 8px;
+      padding: 8px 16px;
       background: linear-gradient(45deg, #00d4ff, #00ff88);
       color: #ffffff;
       text-decoration: none;
-      border-radius: 25px;
+      border-radius: 20px;
       font-weight: bold;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
       box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
     }
@@ -471,24 +474,24 @@
     /* Certifications */
     .cert-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1400px;
       width: 100%;
     }
 
     .cert-column {
       background: rgba(255, 255, 255, 0.08);
-      padding: 30px;
-      border-radius: 20px;
+      padding: 20px;
+      border-radius: 15px;
       border: 1px solid rgba(20, 196, 28, 0.15);
       backdrop-filter: blur(25px);
     }
 
     .cert-column h4 {
       color: #00ff88;
-      font-size: 2rem;
-      margin-bottom: 25px;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
       text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
       text-align: center;
     }
@@ -498,10 +501,10 @@
     }
 
     .cert-column li {
-      margin-bottom: 15px;
-      padding: 10px 15px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
       background: rgba(225, 21, 21, 0.05);
-      border-radius: 10px;
+      border-radius: 8px;
       border-left: 3px solid #090f15;
       transition: all 0.3s ease;
     }
@@ -516,10 +519,12 @@
       color: #ffffff;
       text-decoration: none;
       font-weight: 600;
+      font-size: 0.9rem;
       text-shadow: 0 0 3px rgba(0, 212, 255, 0.3);
       word-wrap: break-word;
       overflow-wrap: break-word;
       display: inline-block;
+      line-height: 1.4;
     }
 
     .cert-column a:hover {
@@ -528,12 +533,12 @@
     }
 
     .cert-column h5 {
-      color: #00d4ff;
-      font-size: 1.3rem;
-      margin-top: 20px;
-      margin-bottom: 15px;
+      color: #00ff88;
+      font-size: 1.1rem;
+      margin-top: 18px;
+      margin-bottom: 12px;
       text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       border-bottom: 2px solid rgba(0, 212, 255, 0.3);
     }
 
@@ -831,11 +836,13 @@
       }
       
       .card-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
       }
       
       .cert-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
       }
     }
 
@@ -921,48 +928,66 @@
 
       .card-grid { 
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
         padding: 0 10px;
       }
 
       .neon-card {
-        padding: 20px;
+        padding: 18px;
       }
 
       .neon-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .neon-card p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
 
       .neon-card img {
-        max-width: 120px;
-        height: 120px;
+        max-width: 100px;
+        height: 100px;
+      }
+
+      .neon-card a {
+        padding: 7px 14px;
+        font-size: 0.85rem;
+      }
+
+      .view-gallery-btn {
+        padding: 7px 14px;
+        font-size: 0.85rem;
       }
 
       .cert-grid { 
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
         padding: 0 10px;
       }
 
       .cert-column {
-        padding: 20px;
+        padding: 18px;
       }
 
       .cert-column h4 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
       }
 
       .cert-column h5 {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-top: 15px;
+        margin-bottom: 10px;
       }
 
       .cert-column a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         word-wrap: break-word;
+      }
+
+      .cert-column li {
+        padding: 7px 10px;
+        margin-bottom: 10px;
       }
 
       .project-filters {
@@ -1093,11 +1118,26 @@
       }
 
       .neon-card h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .neon-card p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+      }
+
+      .neon-card img {
+        max-width: 90px;
+        height: 90px;
+      }
+
+      .neon-card a {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+
+      .view-gallery-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
       }
 
       .project-filter-btn {
@@ -1109,6 +1149,30 @@
         font-size: 1rem !important;
       }
 
+      .cert-column {
+        padding: 15px;
+      }
+
+      .cert-column h4 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+
+      .cert-column h5 {
+        font-size: 0.95rem;
+        margin-top: 12px;
+        margin-bottom: 8px;
+      }
+
+      .cert-column a {
+        font-size: 0.8rem;
+      }
+
+      .cert-column li {
+        padding: 6px 9px;
+        margin-bottom: 8px;
+      }
+
       .thank-you-popup {
         padding: 15px 20px;
         font-size: 0.9rem;
@@ -1116,17 +1180,17 @@
     }
 
     .view-gallery-btn {
-   display: inline-block;
-      padding: 15px 30px;
+      display: inline-block;
+      padding: 8px 16px;
       background: linear-gradient(45deg, #00d4ff, #00ff88);
       color: #ffffff;
       text-decoration: none;
-      border-radius: 30px;
+      border-radius: 20px;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
       box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
-      margin: 10px;
+      margin: 12px 8px 0 0;
       border: none;
       cursor: pointer;
     }
