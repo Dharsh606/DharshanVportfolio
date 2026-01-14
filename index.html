@@ -303,10 +303,12 @@
     /* Skills Section */
     .skills-icons {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 40px;
-      max-width: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
       width: 100%;
+      padding: 20px;
+      justify-items: center;
     }
 
     /* Project Filters */
@@ -344,13 +346,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      justify-content: center;
+      padding: 25px 20px;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 20px;
       border: 2px solid #00d4ff;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
       cursor: pointer;
+      width: 100%;
+      max-width: 150px;
+      min-height: 150px;
     }
 
     .icon-item:hover {
@@ -913,13 +919,15 @@
       }
 
       .skills-icons { 
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); 
-        gap: 15px;
-        padding: 0 10px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+        gap: 20px;
+        padding: 15px;
       }
 
       .icon-item {
-        padding: 15px;
+        padding: 20px 15px;
+        max-width: 130px;
+        min-height: 130px;
       }
 
       .icon-item img {
@@ -1102,12 +1110,15 @@
       }
 
       .skills-icons { 
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); 
-        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+        gap: 15px;
+        padding: 10px;
       }
 
       .icon-item {
-        padding: 12px;
+        padding: 18px 12px;
+        max-width: 110px;
+        min-height: 110px;
       }
 
       .icon-item img {
