@@ -3,7 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Dharshan V - IT Student and Tech Enthusiast. Full Stack Developer specializing in MERN Stack, Python, Flutter, and Web Development. Explore my projects, skills, and experience." />
+  <meta name="keywords" content="Dharshan V, Portfolio, Full Stack Developer, MERN Stack, Python, Flutter, Web Development, IT Student" />
+  <meta name="author" content="Dharshan V" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dharshan V | Portfolio" />
+  <meta property="og:description" content="IT Student and Tech Enthusiast. Full Stack Developer specializing in MERN Stack, Python, Flutter, and Web Development." />
+  <meta property="og:url" content="https://dharshdev.nettlify.app" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dharshan V | Portfolio" />
+  <meta name="twitter:description" content="IT Student and Tech Enthusiast. Full Stack Developer specializing in MERN Stack, Python, Flutter, and Web Development." />
+  
   <title>Dharshan V | Portfolio</title>
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="documents/favicon.ico" />
+  
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
@@ -57,6 +80,39 @@
     .navbar.show {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 2001;
+    }
+
+    .menu-toggle span {
+      width: 28px;
+      height: 3px;
+      background: #00d4ff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
     }
 
     .nav-container {
@@ -1068,6 +1124,43 @@
         font-size: 1.2rem;
       }
 
+      /* Mobile Menu */
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(10, 10, 26, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        gap: 0;
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-item {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+      }
+
+      .nav-link {
+        display: block;
+        padding: 15px 20px;
+        width: 100%;
+        text-align: left;
+      }
+
       .modal-content {
         width: 95%;
         padding: 20px;
@@ -1087,6 +1180,48 @@
       footer {
         padding: 30px 15px;
         font-size: 0.9rem;
+      }
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+      transition: all 0.3s ease;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .back-to-top.show {
+      display: flex;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.7);
+      background: linear-gradient(45deg, #00ff88, #00d4ff);
+    }
+
+    @media (max-width: 768px) {
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
       }
     }
 
@@ -1228,6 +1363,11 @@
       <div class="nav-logo">
         <a href="#home">DV </a>
       </div>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="nav-menu">
         <li class="nav-item">
           <a href="#home" class="nav-link">Home</a>
@@ -1266,7 +1406,7 @@
   <!-- landing page -->
 
   <header id="home" data-aos="zoom-out-up" data-aos-duration="2700">
-    <img src="documents/profile.jpg" alt="Dharshan V" class="profile-img" />
+    <img src="documents/profile.jpg" alt="Dharshan V" class="profile-img" loading="lazy" />
     <h1>DHARSHAN V</h1>
     <h2>IT Student and Tech Enthusiast</h2>
   </header>
@@ -1278,7 +1418,7 @@
     <h2 class="section-title">About Me</h2>
     <div class="about-content">
       <div class="about-image">
-        <img src="documents/subpic.jpg" alt="Dharshan V" />
+        <img src="documents/subpic.jpg" alt="Dharshan V" loading="lazy" />
       </div>
       <div class="about-text">
         <p>
@@ -1297,83 +1437,83 @@
     <h2 class="section-title">Skills & Technologies</h2>
     <div class="skills-icons">
       <div class="icon-item" title="Python">
-        <img src="documents/skills/python.png" alt="Python" />
+        <img src="documents/skills/python.png" alt="Python" loading="lazy" />
         <span>Python</span>
       </div>
       <div class="icon-item" title="C++">
-        <img src="documents/skills/C++.png" alt="C++" />
+        <img src="documents/skills/C++.png" alt="C++" loading="lazy" />
         <span>C++</span>
       </div>
       <div class="icon-item" title="Java">
-        <img src="documents/skills/java.png" alt="Java" />
+        <img src="documents/skills/java.png" alt="Java" loading="lazy" />
         <span>Java</span>
       </div>
       <div class="icon-item" title="HTML5">
-        <img src="documents/skills/html.png" alt="HTML5" />
+        <img src="documents/skills/html.png" alt="HTML5" loading="lazy" />
         <span>HTML5</span>
       </div>
       <div class="icon-item" title="CSS3">
-        <img src="documents/skills/css.png" alt="CSS3" />
+        <img src="documents/skills/css.png" alt="CSS3" loading="lazy" />
         <span>CSS3</span>
       </div>
       <div class="icon-item" title="JavaScript">
-        <img src="documents/skills/js.png" alt="JavaScript" />
+        <img src="documents/skills/js.png" alt="JavaScript" loading="lazy" />
         <span>JavaScript</span>
       </div>
       <div class="icon-item" title="Flutter">
-        <img src="documents/skills/flutter.png" alt="Flutter" />
+        <img src="documents/skills/flutter.png" alt="Flutter" loading="lazy" />
         <span>Flutter</span>
       </div>
       <div class="icon-item" title="Dart">
-        <img src="documents/skills/dart.png" alt="Dart" />
+        <img src="documents/skills/dart.png" alt="Dart" loading="lazy" />
         <span>Dart</span>
       </div>
       <div class="icon-item" title="React">
-        <img src="documents/skills/react.png" alt="React" />
+        <img src="documents/skills/react.png" alt="React" loading="lazy" />
         <span>React</span>
       </div>
        <div class="icon-item" title="Angular">
-        <img src="documents/skills/angular.png" alt="Angular" />
+        <img src="documents/skills/angular.png" alt="Angular" loading="lazy" />
         <span>Angular</span>
       </div>
       <div class="icon-item" title="Node.js">
-        <img src="documents/skills/node.png" alt="Node.js" />
+        <img src="documents/skills/node.png" alt="Node.js" loading="lazy" />
         <span>Node.js</span>
       </div>
       <div class="icon-item" title="Express.js">
-        <img src="documents/skills/express.png" alt="Express.js" />
+        <img src="documents/skills/express.png" alt="Express.js" loading="lazy" />
         <span>Express.js</span>
       </div>
       <div class="icon-item" title="MySQL">
-        <img src="documents/skills/mysql.png" alt="MySQL" />
+        <img src="documents/skills/mysql.png" alt="MySQL" loading="lazy" />
         <span>MySQL</span>
       </div>
        <div class="icon-item" title="Mongodb">
-        <img src="documents/skills/mongodb.png" alt="Mongodb" />
+        <img src="documents/skills/mongodb.png" alt="Mongodb" loading="lazy" />
         <span>Mongodb</span>
       </div>
       <div class="icon-item" title="Bootstrap">
-        <img src="documents/skills/boot.png" alt="Bootstrap" />
+        <img src="documents/skills/boot.png" alt="Bootstrap" loading="lazy" />
         <span>Bootstrap</span>
       </div>
        <div class="icon-item" title="UI/UX Design">
-        <img src="documents/skills/uiux.png" alt="UI/UX Design" />
+        <img src="documents/skills/uiux.png" alt="UI/UX Design" loading="lazy" />
         <span>UI/UX</span>
       </div>
        <div class="icon-item" title="Canva Design">
-        <img src="documents/skills/canva.png" alt="canva Design" />
+        <img src="documents/skills/canva.png" alt="canva Design" loading="lazy" />
         <span>Canva</span>
       </div>
       <div class="icon-item" title="Git">
-        <img src="documents/skills/git.png" alt="Git" />
+        <img src="documents/skills/git.png" alt="Git" loading="lazy" />
         <span>Git</span>
       </div>
        <div class="icon-item" title="AWS (EC2)">
-        <img src="documents/skills/aws.png" alt="AWS (EC2)" />
+        <img src="documents/skills/aws.png" alt="AWS (EC2)" loading="lazy" />
         <span>AWS (EC2)</span>
       </div>
       <div class="icon-item" title="Microsoft Excel">
-        <img src="documents/skills/excel.png" alt="Microsoft Excel" />
+        <img src="documents/skills/excel.png" alt="Microsoft Excel" loading="lazy" />
         <span>Excel</span>
       </div>
     </div>
@@ -1518,6 +1658,9 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     <!-- next one-->
 
 
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://github.com/Dharsh606" target="_blank" class="neon-button">Explore More...</a>
     </div>
     </section>
 
@@ -1728,6 +1871,9 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     <p>© 2025 Dharshan V. All rights reserved.</p>
   </footer>
 
+  <!-- Back to Top Button -->
+  <a href="#home" class="back-to-top" aria-label="Back to top" title="Back to top">↑</a>
+
   <!-- Project Modal -->
   <div id="projectModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
     <div class="modal-content">
@@ -1756,6 +1902,59 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
       duration: 1000,
       once: true
     });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', 
+          menuToggle.classList.contains('active') ? 'true' : 'false'
+        );
+      });
+
+      // Close menu when clicking on a link
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+          menuToggle.classList.remove('active');
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Back to Top Button
+    const backToTopBtn = document.querySelector('.back-to-top');
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
 
     // Navbar hide/show on scroll
     const navbar = document.querySelector('.navbar');
