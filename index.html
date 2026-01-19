@@ -66,7 +66,7 @@
       max-width: 100vw;
       background: rgba(10, 10, 26, 0.98);
       backdrop-filter: blur(10px);
-      z-index: 2000;
+      z-index: 3200;
       padding: 15px 0;
       transition: transform 0.3s ease, opacity 0.3s ease;
       overflow-x: hidden;
@@ -80,39 +80,6 @@
     .navbar.show {
       transform: translateY(0);
       opacity: 1;
-    }
-
-    /* Mobile Menu Toggle */
-    .menu-toggle {
-      display: none;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 2001;
-    }
-
-    .menu-toggle span {
-      width: 28px;
-      height: 3px;
-      background: #00d4ff;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(8px, 8px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(8px, -8px);
     }
 
     .nav-container {
@@ -143,7 +110,7 @@
       margin-left: auto;
       margin-right: 0;
       padding: 0;
-      z-index: 2100; 
+      z-index: 3300;
     }
 
     .nav-link {
@@ -165,6 +132,15 @@
       color: #00d4ff;
       background: rgba(0, 212, 255, 0.25);
       text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    }
+
+    /* Mobile bottom navigation (hidden on desktop) */
+    .mobile-nav {
+      display: none;
+    }
+
+    .mobile-nav a {
+      text-decoration: none;
     }
 
 
@@ -1125,42 +1101,61 @@
         font-size: 1.2rem;
       }
 
-      /* Mobile Menu */
-      .menu-toggle {
-        display: flex;
-      }
-
+      /* Mobile navigation structure */
       .nav-menu {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
         position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: rgba(10, 10, 26, 0.98);
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        gap: 0;
-        padding: 80px 20px 20px;
-        transition: right 0.3s ease;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-        overflow-y: auto;
-        z-index: 2500; 
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 10px;
+        background: rgba(10, 10, 26, 0.82);
+        border: 1px solid rgba(0, 212, 255, 0.25);
+        backdrop-filter: blur(14px);
+        border-radius: 18px;
+        z-index: 3500;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
       }
 
-      .nav-menu.active {
-        right: 0;
-      }
-
-      .nav-item {
+      .mobile-nav .mobile-nav-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        padding: 10px 6px;
+        border-radius: 14px;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(0, 212, 255, 0.18);
+        transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+        text-shadow: 0 0 6px rgba(0, 212, 255, 0.25);
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      .nav-link {
-        display: block;
-        padding: 15px 20px;
-        width: 100%;
-        text-align: left;
+      .mobile-nav .mobile-nav-link:active {
+        transform: scale(0.98);
+      }
+
+      .mobile-nav .mobile-nav-link.active {
+        color: #0a0a1a;
+        background: linear-gradient(45deg, #00d4ff, #00ff88);
+        border-color: transparent;
+        box-shadow: 0 0 18px rgba(0, 212, 255, 0.35);
+        text-shadow: none;
+      }
+
+      /* Make room so bottom nav doesn’t overlap content */
+      .full-section {
+        padding-bottom: 120px;
       }
 
       .modal-content {
@@ -1365,11 +1360,6 @@
       <div class="nav-logo">
         <a href="#home">DV </a>
       </div>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
       <ul class="nav-menu">
         <li class="nav-item">
           <a href="#home" class="nav-link">Home</a>
@@ -1878,6 +1868,15 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
   <!-- Back to Top Button -->
   <a href="#home" class="back-to-top" aria-label="Back to top" title="Back to top">↑</a>
 
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#home" class="mobile-nav-link">Home</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
   <!-- Project Modal -->
   <div id="projectModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
     <div class="modal-content">
@@ -1907,38 +1906,8 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
       once: true
     });
 
-    // Mobile Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
+    // Navigation references (desktop + mobile)
     const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    if (menuToggle && navMenu) {
-      menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', 
-          menuToggle.classList.contains('active') ? 'true' : 'false'
-        );
-      });
-
-      // Close menu when clicking on a link
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          menuToggle.classList.remove('active');
-          navMenu.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-          menuToggle.classList.remove('active');
-          navMenu.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
 
     // Back to Top Button
     const backToTopBtn = document.querySelector('.back-to-top');
@@ -2321,26 +2290,10 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     }
 
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-          targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
     // Active navigation highlighting
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('.full-section, header');
-      const navLinks = document.querySelectorAll('.nav-link');
+      const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
       
       let current = '';
       sections.forEach(section => {
