@@ -1,37 +1,66 @@
-# 🌟 Dharsh's Developer Portfolio
+# Dharshan V – Portfolio
 
-Welcome to my developer portfolio! This repository showcases my web development projects, skills, and professional journey. Built with a focus on clean design and responsive layout, it reflects my passion for creating functional and visually appealing digital experiences.
+This repository contains the source code for my personal developer portfolio.  
+The site highlights my projects, internships, certifications, skills, and contact details in a modern, responsive single‑page layout.
 
-## 📌 About Me
+## Overview
 
-Hi, I'm **Dharsh** from Hosur, Tamil Nadu, India — a tech enthusiast and a self-driven web developer.
+- **Name**: Dharshan V  
+- **Location**: Hosur, Tamil Nadu, India  
+- **Role**: IT Student · Full Stack / MERN & Flutter Enthusiast  
+- **Last major content update**: February 2026
 
-- 🎯 Currently enhancing my skills in full-stack development
-- 📚 Learning advanced JavaScript, React, and Node.js
-- 🛠️ Problem solver with a passion for clean and efficient code
-- 📫 Reach me at: [gurudhaya2536@gmail.com](mailto:gurudhaya2536@gmail.com)
+## Tech Stack
 
-## 🧰 Tech Stack
+- **Frontend**: HTML5, CSS3, JavaScript, AOS, Swiper  
+- **Backend / Services**: EmailJS (for contact form handling)  
+- **Tooling**: Git, GitHub, VS Code  
+- **Design & Assets**: Canva, custom illustrations and screenshots
 
-- **Frontend:** HTML, CSS, JavaScript, React
-- **Backend:** Node.js, Express
-- **Tools:** Git, GitHub, VS Code
-- **Design:** Figma, Canva, Adobe
+## Key Sections
 
-## 🚀 Projects
+- **Home** – Landing section with name, role, and profile photo.  
+- **About** – Short summary of my background and interests.  
+- **Skills** – Visual grid of technologies and tools I work with.  
+- **Experience** – Real‑world experience, including my Full Stack internship at White and Box Tech.  
+- **Projects** – Highlighted projects such as RC World, D SkyCast, Lifesync AI Mood Tracker, D‑Write AI, Wander Dharsh, Binlytics, and D‑Luxury Grand Hotel.  
+- **Blogs & Articles** – Links to my technical blogs and articles.  
+- **Certifications & Internships** – Certificates, internships, licenses, and hackathon achievements.  
+- **Resume** – Direct link to my latest resume PDF.  
+- **Contact & Socials** – Email, phone, LinkedIn, GitHub, Instagram, and WhatsApp.
 
-### 🌐 Portfolio Website
-- A responsive portfolio showcasing my projects and skills.
-- **Built With:** HTML, CSS, JavaScript
-- **Live Demo:** [https://dharshanvportfolio.netlify.app/](https://dharshanvportfolio.netlify.app/)
+## Live Deployment
 
-## 📞 Contact
+- **GitHub Pages**: `https://dharsh606.github.io/DharshanVportfolio/`
 
-- 📧 Email: [gurudhaya2536@gmail.com](mailto:gurudhaya2536@gmail.com)
-- 🌐 Portfolio: [https://dharsh606.github.io/DharshanVportfolio/](https://dharsh606.github.io/DharshanVportfolio/)
-- 🔗 LinkedIn: [https://www.linkedin.com/in/dharshanvreddy/](https://www.linkedin.com/in/dharshanvreddy/)
+## Licenses & Usage
 
----
+- **Certificates and Internship PDFs** (under `certificates/`, `Internships/`)  
+  These documents are personal credentials and **must not** be reused, redistributed, or modified without my explicit written permission.
 
-Thanks for visiting my portfolio! Feel free to reach out if you'd like to collaborate or chat about tech.
+- **License PDFs** (under `licenses/`)  
+  These are proof of completion of simulations and courses (e.g., JP Morgan, AWS Forage, Coursera). They are shared here only as part of my portfolio and **are not licensed for reuse** by others.
+
+- **Images, Logos, and Screenshots** (under `documents/`, `experience/`, `blogs/` and subfolders)  
+  These assets are either:
+  - Created by me, or  
+  - Exported from tools I am licensed to use, or  
+  - Screenshots of projects I have built or contributed to.  
+  You may not republish or resell these assets without permission. You may reference them for inspiration with attribution.
+
+- **Source Code**  
+  Unless otherwise stated in a future `LICENSE` file, all source code in this repository is provided for portfolio and learning purposes only.  
+  - You may view and learn from the code.  
+  - Do **not** claim it as your own work or use it in commercial products without my consent.
+
+If you are unsure whether a particular use is allowed, please contact me.
+
+## Contact
+
+- **Email**: `dharshan.vreddy2819@gmail.com`  
+- **Portfolio**: `https://dharsh606.github.io/DharshanVportfolio/`  
+- **LinkedIn**: `https://www.linkedin.com/in/dharshanvreddy/`  
+- **GitHub**: `https://github.com/Dharsh606`
+
+Thank you for visiting my portfolio repository. Feel free to reach out for collaboration, internship opportunities, or project discussions.
 
