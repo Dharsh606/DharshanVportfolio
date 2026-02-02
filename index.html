@@ -253,6 +253,10 @@
       background: linear-gradient(135deg, #34495e 0%, #3f5277 50%, #4a6fa5 100%);
     }
 
+    .section-testimonials {
+      background: linear-gradient(135deg, #283649 0%, #1f2b3f 50%, #182233 100%);
+    }
+
     .section-contact {
       background: linear-gradient(135deg, #3f5277 0%, #4a6fa5 50%, #0f0f23 100%);
     }
@@ -331,6 +335,82 @@
       border-radius: 15px;
       border: 2px solid rgba(0, 212, 255, 0.25);
       backdrop-filter: blur(10px);
+    }
+
+    /* Testimonials Section */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      border: 2px solid rgba(0, 212, 255, 0.25);
+      padding: 22px 20px 24px;
+      backdrop-filter: blur(14px);
+      text-align: left;
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '“';
+      position: absolute;
+      top: -35px;
+      right: 15px;
+      font-size: 5rem;
+      color: rgba(0, 212, 255, 0.16);
+      font-weight: 700;
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #00d4ff;
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      flex-shrink: 0;
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-meta h3 {
+      font-size: 1.1rem;
+      color: #00d4ff;
+      margin-bottom: 4px;
+      text-shadow: 0 0 6px rgba(0, 212, 255, 0.5);
+    }
+
+    .testimonial-meta p {
+      font-size: 0.9rem;
+      color: #cfd8dc;
+      margin: 0;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: #ffffff;
+      line-height: 1.7;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+      margin-top: 6px;
     }
 
     /* Skills Section */
@@ -1374,6 +1454,9 @@
           <a href="#experience" class="nav-link">Experience</a>
         </li>
         <li class="nav-item">
+          <a href="#testimonials" class="nav-link">Testimonials</a>
+        </li>
+        <li class="nav-item">
           <a href="#projects" class="nav-link">Projects</a>
         </li>
         <li class="nav-item">
@@ -1525,6 +1608,95 @@
         <p>Full Stack Intern at White and Box, actively contributing to real-world web applications through frontend development, backend integration, and performance optimization.</p>
         <a href="https://whiteandbox.com/" target="_blank" class="neon-button">Visit Company</a>
         <button class="view-gallery-btn">View Gallery</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- testimonials -->
+
+  <section id="testimonials" class="full-section section-testimonials" data-aos="zoom-in-up" data-aos-duration="1500">
+    <h2 class="section-title">Testimonials</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">
+            <img src="experience/w&blogo.png" alt="White and Box Tech" loading="lazy" />
+          </div>
+          <div class="testimonial-meta">
+            <h3>Project Mentor</h3>
+            <p>Full Stack Intern – White and Box Tech</p>
+          </div>
+        </div>
+        <p class="testimonial-text">
+          “Dharshan consistently takes ownership of his work. From frontend design to backend integration, he delivers clean,
+          reliable features and asks thoughtful questions that show strong fundamentals in full stack development.”
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">
+            <img src="documents/wanderdharsh/logo.png" alt="Wander Dharsh Collaboration" loading="lazy" />
+          </div>
+          <div class="testimonial-meta">
+            <h3>Travel Website Partner</h3>
+            <p>Wander Dharsh – Trip Booking Site</p>
+          </div>
+        </div>
+        <p class="testimonial-text">
+          “We built Wander Dharsh together as a collaboration. Dharshan handled most of the structure, responsiveness, and
+          booking flow, while coordinating smoothly with me on design and content so the site feels cohesive end‑to‑end.”
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">
+            <img src="documents/binlytics/logo.png" alt="Binlytics Reviewer" loading="lazy" />
+          </div>
+          <div class="testimonial-meta">
+            <h3>Open Source Reviewer</h3>
+            <p>Binlytics – Analytics Platform</p>
+          </div>
+        </div>
+        <p class="testimonial-text">
+          “Binlytics started as a hackathon project where Dharshan and his team reached the final round. Even though it did not
+          win, the app clearly demonstrates strong problem‑solving, clean dashboards, and a well‑structured backend that judges
+          appreciated.”
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">
+            <img src="documents/D-luxury/D-luxury-logo.png" alt="D-Luxury Stakeholder" loading="lazy" />
+          </div>
+          <div class="testimonial-meta">
+            <h3>Product Stakeholder</h3>
+            <p>D‑Luxury Grand Hotel Dashboard</p>
+          </div>
+        </div>
+        <p class="testimonial-text">
+          “D‑Luxury is a client project built for our internal hotel staff. Dharshan adapted an existing hotel dashboard concept,
+          customized it for our workflows, and delivered a working copy with clear booking, check‑in, and check‑out flows that
+          our team could start using quickly.”
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">
+            <img src="documents/profile.jpg" alt="Peer Feedback" loading="lazy" />
+          </div>
+          <div class="testimonial-meta">
+            <h3>Peer & Collaborator</h3>
+            <p>Academic & Hackathon Projects</p>
+          </div>
+        </div>
+        <p class="testimonial-text">
+          “Working with Dharshan on college projects and hackathons has been inspiring. He’s the person who keeps the team
+          moving — from UI mockups to deployment, he always finds a way to ship on time.”
+        </p>
       </div>
     </div>
   </section>
@@ -1875,6 +2047,7 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     <a href="#home" class="mobile-nav-link">Home</a>
     <a href="#about" class="mobile-nav-link">About</a>
     <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
     <a href="#projects" class="mobile-nav-link">Projects</a>
     <a href="#contact" class="mobile-nav-link">Contact</a>
   </nav>
