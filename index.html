@@ -413,6 +413,39 @@
       margin-top: 6px;
     }
 
+    /* Add Testimonial Button */
+    .add-testimonial-btn {
+      position: absolute;
+      top: 40px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
+      border: none;
+      color: #ffffff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .add-testimonial-btn:hover {
+      transform: scale(1.1) rotate(90deg);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+      background: linear-gradient(45deg, #00ff88, #00d4ff);
+    }
+
+    .add-icon {
+      line-height: 1;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
     /* Skills Section */
     .skills-icons {
       display: grid;
@@ -1181,6 +1214,15 @@
         font-size: 1.2rem;
       }
 
+      /* Add testimonial button responsive */
+      .add-testimonial-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+        top: 20px;
+        right: 15px;
+      }
+
       /* Mobile navigation structure */
       .nav-menu {
         display: none;
@@ -1616,6 +1658,9 @@
 
   <section id="testimonials" class="full-section section-testimonials" data-aos="zoom-in-up" data-aos-duration="1500">
     <h2 class="section-title">Testimonials</h2>
+    <button id="add-testimonial-btn" class="add-testimonial-btn" type="button" aria-label="Add new testimonial">
+      <span class="add-icon">+</span>
+    </button>
     <div class="testimonials-grid">
       <div class="testimonial-card">
         <div class="testimonial-header">
@@ -2075,6 +2120,45 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- Testimonial Modal -->
+  <div id="testimonial-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="close-testimonial-modal">&times;</span>
+      <h2 style="color: #00d4ff; margin-bottom: 20px; text-align: center;">Add New Testimonial</h2>
+      <form id="testimonial-form" class="testimonial-form">
+        <div class="form-group">
+          <label for="testimonial-name" style="color: #ffffff; display: block; margin-bottom: 8px;">Name *</label>
+          <input type="text" id="testimonial-name" class="form-input" required placeholder="Enter person's name">
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-role" style="color: #ffffff; display: block; margin-bottom: 8px;">Role/Position *</label>
+          <input type="text" id="testimonial-role" class="form-input" required placeholder="e.g. Project Manager, Team Lead">
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-company" style="color: #ffffff; display: block; margin-bottom: 8px;">Company/Organization *</label>
+          <input type="text" id="testimonial-company" class="form-input" required placeholder="e.g. Company Name, Project Name">
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-message" style="color: #ffffff; display: block; margin-bottom: 8px;">Testimonial Message *</label>
+          <textarea id="testimonial-message" class="form-input form-textarea" required placeholder="Enter the testimonial message..." rows="4"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-avatar" style="color: #ffffff; display: block; margin-bottom: 8px;">Avatar Image URL (optional)</label>
+          <input type="url" id="testimonial-avatar" class="form-input" placeholder="https://example.com/avatar.jpg">
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+          <button type="submit" class="neon-button">Add Testimonial</button>
+          <button type="button" class="neon-button" id="cancel-testimonial" style="margin-left: 15px;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     AOS.init({
       duration: 1000,
@@ -2508,6 +2592,103 @@ Developed an AI-powered writing assistant that helps users improve grammar, refi
     });
 
     applyProjectFilter('all');
+
+    // Testimonial Modal Functionality
+    const addTestimonialBtn = document.getElementById('add-testimonial-btn');
+    const testimonialModal = document.getElementById('testimonial-modal');
+    const closeTestimonialModal = document.getElementById('close-testimonial-modal');
+    const testimonialForm = document.getElementById('testimonial-form');
+    const cancelTestimonialBtn = document.getElementById('cancel-testimonial');
+    const testimonialsGrid = document.querySelector('.testimonials-grid');
+
+    // Open modal
+    if (addTestimonialBtn) {
+      addTestimonialBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (testimonialModal) {
+          testimonialModal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+
+    // Close modal
+    function closeTestimonialModalFunc() {
+      if (testimonialModal) {
+        testimonialModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+      if (testimonialForm) {
+        testimonialForm.reset();
+      }
+    }
+
+    if (closeTestimonialModal) {
+      closeTestimonialModal.addEventListener('click', closeTestimonialModalFunc);
+    }
+    
+    if (cancelTestimonialBtn) {
+      cancelTestimonialBtn.addEventListener('click', closeTestimonialModalFunc);
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === testimonialModal) {
+        closeTestimonialModalFunc();
+      }
+    });
+
+    // Handle form submission
+    if (testimonialForm) {
+      testimonialForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('testimonial-name').value.trim();
+        const role = document.getElementById('testimonial-role').value.trim();
+        const company = document.getElementById('testimonial-company').value.trim();
+        const message = document.getElementById('testimonial-message').value.trim();
+        const avatarUrl = document.getElementById('testimonial-avatar').value.trim() || 'documents/profile.jpg';
+
+        // Create new testimonial card
+        const newCard = document.createElement('div');
+        newCard.className = 'testimonial-card';
+        newCard.setAttribute('data-aos', 'zoom-in-up');
+        newCard.setAttribute('data-aos-duration', '1500');
+        
+        newCard.innerHTML = `
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="${avatarUrl}" alt="${name}" loading="lazy" />
+            </div>
+            <div class="testimonial-meta">
+              <h3>${name}</h3>
+              <p>${role} – ${company}</p>
+            </div>
+          </div>
+          <p class="testimonial-text">
+            "${message}"
+          </p>
+        `;
+
+        // Add to the grid
+        if (testimonialsGrid) {
+          testimonialsGrid.appendChild(newCard);
+        }
+        
+        // Re-initialize AOS for the new element
+        if (typeof AOS !== 'undefined') {
+          AOS.refresh();
+        }
+
+        // Show success message
+        showThankYou('Testimonial added successfully!');
+        
+        // Close modal and reset form
+        closeTestimonialModalFunc();
+      });
+    }
+
   </script>
+
 </body>
 </html>
